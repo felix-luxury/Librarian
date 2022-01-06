@@ -1,0 +1,11 @@
+﻿<format>
+ <ID>
+  ГОСТ
+ </ID>
+ <pubtype>
+  Book
+ </pubtype>
+ <fmtstring>
+  $Author $Title. $City $[: ]Publisher, $Year. $Pages[.]
+ </fmtstring>
+</format>

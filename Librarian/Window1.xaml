@@ -1,0 +1,74 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Librarian"
+        xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Class="Librarian.Personal"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800" Closing="Personal_Closing" Activated="Window_Activated">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="729*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="432*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="c_Autor" HorizontalAlignment="Left" Margin="113,46,0,0" VerticalAlignment="Top" Width="148" SelectionChanged="c_Autor_SelectionChanged" Background="{x:Null}" Grid.Row="1" Grid.Column="1">
+            <System:String>Название издательства</System:String>
+            <System:String>Место издания</System:String>
+            <System:String>Год издания</System:String>
+            <System:String>Количество страниц</System:String>
+        </ComboBox>
+        <ComboBox x:Name="c_Publisher" HorizontalAlignment="Left" Margin="8,46,0,0" VerticalAlignment="Top" Width="169" SelectionChanged="c_Publisher_SelectionChanged" Background="{x:Null}" Grid.Row="1" Grid.ColumnSpan="2">
+            <System:String>Книга</System:String>
+            <System:String>Научный доклад</System:String>
+            <System:String>Журнал</System:String>
+            <System:String>Статья</System:String>
+            <System:String>Публикация</System:String>
+            <System:String>НИР</System:String>
+        </ComboBox>
+        <Button x:Name="b_Add" Content="Управление источниками" HorizontalAlignment="Left" Margin="113,23,0,0" VerticalAlignment="Top" Width="148" Click="b_Add_Click" Height="21" Background="#FFC3FFFA" VerticalContentAlignment="Center" BorderBrush="White" Grid.Row="1" Grid.Column="1"/>
+        <Button Content="Выбрать стиль" HorizontalAlignment="Left" Margin="267,21,0,0" VerticalAlignment="Top" Width="98" Click="Button_Click" Height="21" VerticalContentAlignment="Top" BorderBrush="#FFACACAC" Grid.Row="1" Grid.Column="1"/>
+        <Button Content="Добавить аннотацию" HorizontalAlignment="Left" Margin="574,44,0,0" VerticalAlignment="Top" Width="131" Click="Button_Click" Height="24" VerticalContentAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+        <Button Content="Создать стиль" HorizontalAlignment="Left" Margin="267,45,0,0" VerticalAlignment="Top" Width="98" Click="Button_Click" VerticalContentAlignment="Top" Height="23" BorderBrush="#FFACACAC" Grid.Row="1" Grid.Column="1"/>
+        <Button Content="Поиск ссылки" HorizontalAlignment="Left" Margin="574,16,0,0" VerticalAlignment="Top" Width="98" Click="Button_Click" Height="24" Grid.Row="1" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Margin="113,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="592" Height="308" FontFamily="Times New Roman" FontSize="14" BorderBrush="#FF1D243A" Grid.Row="1" Grid.Column="1"/>
+        <ScrollBar HorizontalAlignment="Left" Margin="685,82,0,0" VerticalAlignment="Top" Height="304" Width="18" Grid.Row="1" Grid.Column="1"/>
+        <TabControl Margin="370,19,160,364" Background="#FFC3FFFA" Grid.Row="1" Grid.Column="1">
+            <TabItem Header="ГОСТ">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="ISBD" HorizontalAlignment="Right" Margin="0,-2,-2,0" Width="58">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+        <TextBox HorizontalAlignment="Left" Margin="8,23,0,0" Text="Ссылки и списки литературы" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Height="21" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Background="#FFC3FFFA" BorderBrush="White" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Button Content="File" HorizontalAlignment="Left" Margin="8,6,0,0" VerticalAlignment="Top" Width="27" Height="17" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.485,0.558" Grid.Row="1"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="37,6,0,0" VerticalAlignment="Top" Width="27" Height="17" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.485,0.558" Grid.Row="1"/>
+        <Button Content="Tools" HorizontalAlignment="Left" Margin="66,6,0,0" VerticalAlignment="Top" Width="31" Height="17" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.485,0.558" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Margin="10,80,0,0" Text="My Library" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Height="308" FontFamily="Times New Roman" FontSize="14" BorderBrush="#FF1D243A" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ScrollBar HorizontalAlignment="Left" Margin="88,82,0,0" VerticalAlignment="Top" Height="304" Width="18" RenderTransformOrigin="-7.111,0.5" Grid.Row="1" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Margin="0,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="800" Height="7" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Background="#FFC3FFFA" BorderBrush="#FFA4A4A4" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="800" Height="7" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Background="#FFC3FFFA" BorderBrush="#FFA4A4A4" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Margin="0,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="6" Height="67" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Background="#FFC3FFFA" BorderBrush="#FFA4A4A4" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" Margin="723,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="6" Height="67" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Background="#FFC3FFFA" BorderBrush="#FFA4A4A4" Grid.Row="1" Grid.Column="1"/>
+        <ToolBar HorizontalAlignment="Left" Height="19" Margin="113,82,0,0" VerticalAlignment="Top" Width="127" Header="Author" Grid.Row="1" Grid.Column="1"/>
+        <ToolBar HorizontalAlignment="Left" Height="19" Margin="240,82,0,0" VerticalAlignment="Top" Width="317" Header="Title" Grid.Row="1" Grid.Column="1"/>
+        <ToolBar HorizontalAlignment="Left" Height="19" Margin="557,82,0,0" VerticalAlignment="Top" Width="127" Header="Journal" Grid.Row="1" Grid.Column="1"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="28,6,0,0" VerticalAlignment="Top" Width="48" Height="17" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.485,0.558" Grid.Row="1" Grid.Column="1">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.149"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.058"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+
+    </Grid>
+</Window>

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Librarian.LiterarySource
+namespace Librarian.Core.LiterarySource
 {
-    class Book : LiterarySource
+    public class ScienceArticle : LiterarySource
     {
-        public int PageCount { get; set; }
     }
 }

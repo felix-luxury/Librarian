@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Librarian.LiterarySource
+namespace Librarian.Core.LiterarySource
 {
-    abstract class LiterarySource
+    public abstract class LiterarySource
     {
         private string title;
-        private string author;
+        private string[] author;
         private PublishInfo publishInfo;
 
         public string Title
@@ -23,7 +23,7 @@ namespace Librarian.LiterarySource
                 title = value;
             }
         }
-        public string Author
+        public string[] Authors
         {
             get
             {

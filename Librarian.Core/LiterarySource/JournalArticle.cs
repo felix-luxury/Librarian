@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Librarian.LiterarySource
+namespace Librarian.Core.LiterarySource
 {
-    class JournalArticle : LiterarySource
+    public class JournalArticle : LiterarySource
     {
-        public string Journal { get; set; }
+        public string JournalTitle { get; set; }
         public int EditionNumber { get; set; }
         public int PageNumber { get; set; }
     }

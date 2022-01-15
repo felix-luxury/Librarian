@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Librarian.References
+namespace Librarian.Core.References
 {
-    class PrintReference : BaseReference
+    public class PrintReference : BaseReference
     {
         public string Print { get; set; }
     }

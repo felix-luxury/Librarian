@@ -1,13 +1,13 @@
-﻿using Librarian.LiterarySource;
+﻿using Librarian.Core.LiterarySource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Librarian.References
+namespace Librarian.Core.References
 {
-    abstract class BaseReference
+    public abstract class BaseReference
     {
         public string[] Author { get; set; }
         public string Title { get; set; }

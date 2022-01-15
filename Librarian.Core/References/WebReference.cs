@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Librarian.LiterarySource
+namespace Librarian.Core.References
 {
-    class WebArticle : LiterarySource
+    public class WebReference : BaseReference
     {
+        public DateTime AccessDate { get; set; }
         public string UrlAddress { get; set; }
     }
 }

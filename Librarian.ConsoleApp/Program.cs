@@ -30,24 +30,15 @@ namespace Librarian.ConsoleApp
         }
         static ReferenceBuilder GetRefBuilder(WebArticle litSource)
         {
-            ReferenceBuilder rb = new ReferenceBuilder();
-            AuthorsField authorsField = new AuthorsField();
-            authorsField.Authors = litSource.Authors;
-            authorsField.Postfix = " ";
-            SimpleField year = new SimpleField(litSource.PublishInfo.Year, "(", "). ");
-            SimpleField articleTitle = new SimpleField(litSource.Title, "", ". ");
-            SimpleField journalTitle = new SimpleField(litSource.JournalTitle, "", ". ");
-            SimpleField date = new SimpleField("Доступ " + litSource.ReadDate.ToString("dd MMMM yyyy"), "", ", ");
-            SimpleField source = new SimpleField("источник " + litSource.UrlAddress, "", "");
+            ReferenceConfig config = new ReferenceConfig();
+            config.AddAuthorField(litSource.Authors, postfix: " ");
+            config.AddYear(litSource.PublishInfo.Year, "(", "). ");
+            config.AddArticleName(litSource.Title, "", ". ");
+            config.AddJournalName(litSource.JournalTitle, "", ". ");
+            config.AddDate(litSource.ReadDate, "dd MMMM yyyy", "Доступ ", ", ");
+            config.AddSource(litSource.UrlAddress, "источник ", "");
 
-
-            rb.AddField(authorsField);
-            rb.AddField(year);
-            rb.AddField(articleTitle);
-            rb.AddField(journalTitle);
-            rb.AddField(date);
-            rb.AddField(source);
-
+            ReferenceBuilder rb = new ReferenceBuilder(config);
             return rb;
         }
     }

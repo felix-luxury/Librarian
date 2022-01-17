@@ -12,14 +12,9 @@ namespace Librarian.Core.References
         public object Value { get; set; }
 
         // Конструкторы
-        public SimpleField(object value)
+        public SimpleField(object value, string prefix = "", string postfix = "")
         {
             Value = value;
-            Prefix = "";
-            Postfix = "";
-        }
-        public SimpleField(object value, string prefix = "", string postfix = "") : this(value)
-        {
             Prefix = prefix;
             Postfix = postfix;
         }

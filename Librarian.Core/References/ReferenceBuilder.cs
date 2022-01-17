@@ -10,23 +10,25 @@ namespace Librarian.Core.References
     public class ReferenceBuilder
     {
         // Поля
-        private List<BaseField> _fieldList;
+        private ReferenceConfig _config;
+
+        public ReferenceConfig Config
+        {
+            get { return _config; }
+            set { _config = value; }
+        }
+
 
         // Конструктор
-        public ReferenceBuilder()
+        public ReferenceBuilder(ReferenceConfig config)
         {
-            _fieldList = new List<BaseField>();
+            _config = config;
         }
     
-        // Методы
-        public void AddField(BaseField field)
-        {
-            _fieldList.Add(field);
-        }
         public string Build()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (BaseField field in _fieldList)
+            foreach (BaseField field in Config.Fields)
             {
                 sb.Append(field.Build());
             }

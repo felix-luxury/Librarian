@@ -6,16 +6,22 @@ using System.Threading.Tasks;
 
 namespace Librarian.Core.References
 {
-    public class AuthorsField : BaseField
+    public class AuthorsField : SimpleField
     {
         public string Delimiter { get; set; }
         public string LastDelimiter { get; set; }
-        public string[] Authors { get; set; }
-
-        public AuthorsField()
+        public string[] Authors
         {
-            Delimiter = ", ";
-            LastDelimiter = " и ";
+            get
+            {
+                return (string[])Value;
+            }
+        }
+
+        public AuthorsField(string[] authors, string prefix, string postfix, string delimiter = ", ", string lastDelimiter = " и ") : base(authors,prefix,postfix)
+        {
+            Delimiter = delimiter;
+            LastDelimiter = lastDelimiter;
         }
 
         public override string Build()

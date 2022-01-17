@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Librarian.Core.LiterarySource
+namespace Librarian.Core.References
 {
     public abstract class BaseField
     {

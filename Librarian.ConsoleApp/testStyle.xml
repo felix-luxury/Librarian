@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Style xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Fields>
+    <FieldType>Authors</FieldType>
+    <FieldType>Year</FieldType>
+    <FieldType>ArticleTitle</FieldType>
+    <FieldType>JournalTitle</FieldType>
+    <FieldType>Date</FieldType>
+    <FieldType>Source</FieldType>
+  </Fields>
+  <Config>
+    <AuthorPrefix />
+    <AuthorPostfix> </AuthorPostfix>
+    <AuthorDelimiter>, </AuthorDelimiter>
+    <AuthorLastDelimiter> и </AuthorLastDelimiter>
+    <YearPrefix>(</YearPrefix>
+    <YearPostfix>). </YearPostfix>
+    <TitlePrefix />
+    <TitlePostfix>. </TitlePostfix>
+    <JournalTitlePrefix />
+    <JournalTitlePostfix>. </JournalTitlePostfix>
+    <DatePrefix>Доступ </DatePrefix>
+    <DatePostfix>, </DatePostfix>
+    <DateFormat>dd MMMM yyyy</DateFormat>
+    <SourcePrefix>источник </SourcePrefix>
+    <SourcePostfix />
+  </Config>
+</Style>

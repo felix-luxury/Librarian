@@ -1,4 +1,4 @@
-﻿namespace Librarian.Core.LiterarySource
+﻿namespace Librarian.Core.LiterarySources
 {
     public class PublishInfo
     {

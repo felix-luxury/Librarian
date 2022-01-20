@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Librarian.Core.References
+namespace Librarian.Core.Styles
+
 {
-    public class ReferenceConfig
+    public class StyleConfig
     {
         public string AuthorPrefix { get; set; }
         public string AuthorPostfix { get; set; }
@@ -14,10 +15,10 @@ namespace Librarian.Core.References
         public string AuthorLastDelimiter { get; set; }
         public string YearPrefix { get; set; }
         public string YearPostfix { get; set; }
-        public string ArticleNamePrefix { get; set; }
-        public string ArticleNamePostfix { get; set; }
-        public string JournalNamePrefix { get; set; }
-        public string JournalNamePostfix { get; set; }
+        public string TitlePrefix { get; set; }
+        public string TitlePostfix { get; set; }
+        public string JournalTitlePrefix { get; set; }
+        public string JournalTitlePostfix { get; set; }
         public string DatePrefix { get; set; }
         public string DatePostfix { get; set; }
         public string DateFormat { get; set; }

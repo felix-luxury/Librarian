@@ -9,4 +9,13 @@
     <ProjectReference Include="..\Librarian.Core\Librarian.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="testLitSource.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="testStyle.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

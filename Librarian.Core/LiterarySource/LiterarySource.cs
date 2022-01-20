@@ -4,46 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Librarian.Core.LiterarySource
+namespace Librarian.Core.LiterarySources
 {
-    public abstract class LiterarySource
+    [Serializable]
+    public class LiterarySource
     {
-        private string title;
-        private string[] author;
-        private PublishInfo publishInfo;
-
-        public string Title
-        {
-            get
-            {
-                return title;
-            }
-            set
-            {
-                title = value;
-            }
-        }
-        public string[] Authors
-        {
-            get
-            {
-                return author;
-            }
-            set
-            {
-                author = value;
-            }
-        }
-        public PublishInfo PublishInfo
-        {
-            get
-            {
-                return publishInfo;
-            }
-            set
-            {
-                publishInfo = value;
-            }
-        }
+        public string[] Authors { get; set; }
+        public PublishInfo PublishInfo { get; set; }
+        public string Title { get; set; }
+        public string JournalTitle { get; set; }
+        public DateTime ReadDate { get; set; }
+        public string Source { get; set; }
     }
 }

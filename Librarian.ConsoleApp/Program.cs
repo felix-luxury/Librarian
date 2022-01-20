@@ -1,6 +1,10 @@
 ﻿using System;
-using Librarian.Core.LiterarySource;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
+using Librarian.Core.LiterarySources;
 using Librarian.Core.References;
+using Librarian.Core.Styles;
 
 namespace Librarian.ConsoleApp
 {
@@ -8,14 +12,47 @@ namespace Librarian.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var source = GetWebSource();
-            var builder = GetRefBuilder(source);
+            LiterarySource source;
+            Style style;
+
+
+            //source = GetLiterarySource();
+            //style = GetStyle();
+
+
+            //using (FileStream fs = new FileStream("litSource.xml", FileMode.OpenOrCreate))
+            //{
+            //    litSourceFormatter.Serialize(fs, source);
+            //    Console.WriteLine("Лит источник сериализован");
+            //}
+            //using (FileStream fs = new FileStream("style.xml", FileMode.OpenOrCreate))
+            //{
+            //    styleFormatter.Serialize(fs, style);
+            //    Console.WriteLine("Стиль сериализован");
+            //}
+
+            XmlSerializer litSourceFormatter = new XmlSerializer(typeof(LiterarySource));
+            XmlSerializer styleFormatter = new XmlSerializer(typeof(Style));
+            using (FileStream fs = new FileStream("testLitSource.xml", FileMode.OpenOrCreate))
+            {
+                source = (LiterarySource)litSourceFormatter.Deserialize(fs);
+                Console.WriteLine("Лит источник десериализован");
+            }
+            using (FileStream fs = new FileStream("testStyle.xml", FileMode.OpenOrCreate))
+            {
+                style = (Style)styleFormatter.Deserialize(fs);
+                Console.WriteLine("Стиль десериализован");
+            }
+
+
+            var builder = new ReferenceBuilder(source, style);
             Console.WriteLine(builder.Build());
         }
 
-        static WebArticle GetWebSource()
+
+        static LiterarySource GetLiterarySource()
         {
-            WebArticle litSource = new WebArticle();
+            LiterarySource litSource = new LiterarySource();
             PublishInfo pub = new PublishInfo();
 
             string[] authors = { "Автор1", "Автор2", "Автор3" };
@@ -25,21 +62,40 @@ namespace Librarian.ConsoleApp
             pub.Year = 2000;
             litSource.PublishInfo = pub;
             litSource.ReadDate = DateTime.Today;
-            litSource.UrlAddress = "google.com";
+            litSource.Source = "https://google.com";
             return litSource;
         }
-        static ReferenceBuilder GetRefBuilder(WebArticle litSource)
+        static Style GetStyle()
         {
-            ReferenceConfig config = new ReferenceConfig();
-            config.AddAuthorField(litSource.Authors, postfix: " ");
-            config.AddYear(litSource.PublishInfo.Year, "(", "). ");
-            config.AddArticleName(litSource.Title, "", ". ");
-            config.AddJournalName(litSource.JournalTitle, "", ". ");
-            config.AddDate(litSource.ReadDate, "dd MMMM yyyy", "Доступ ", ", ");
-            config.AddSource(litSource.UrlAddress, "источник ", "");
+            StyleConfig config = new StyleConfig();
+            config.TitlePostfix = ". ";
+            config.TitlePrefix = "";
+            config.AuthorDelimiter = ", ";
+            config.AuthorLastDelimiter = " и ";
+            config.AuthorPostfix = " ";
+            config.AuthorPrefix = "";
+            config.DateFormat = "dd MMMM yyyy";
+            config.DatePostfix = ", ";
+            config.DatePrefix = "Доступ ";
+            config.JournalTitlePostfix = ". ";
+            config.JournalTitlePrefix = "";
+            config.SourcePostfix = "";
+            config.SourcePrefix = "источник ";
+            config.YearPostfix = "). ";
+            config.YearPrefix = "(";
 
-            ReferenceBuilder rb = new ReferenceBuilder(config);
-            return rb;
+            StyleBuilder builder = new StyleBuilder(config);
+            builder
+                .AddAuthors()
+                .AddYear()
+                .AddArticleTitle()
+                .AddJournalTitle()
+                .AddDate()
+                .AddSource()
+                ;
+
+
+            return builder.Build();
         }
     }
 }

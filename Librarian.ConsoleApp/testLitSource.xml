@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<LiterarySource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Authors>
+    <string>Автор1</string>
+    <string>Автор2</string>
+    <string>Автор3</string>
+    <string>Автор4</string>
+  </Authors>
+  <PublishInfo>
+    <Year>2000</Year>
+  </PublishInfo>
+  <Title>Материализация Бреда</Title>
+  <JournalTitle>Вестник психиатрии</JournalTitle>
+  <ReadDate>2022-01-20T00:00:00+03:00</ReadDate>
+  <Source>https://google.com</Source>
+</LiterarySource>

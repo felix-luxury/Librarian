@@ -1,4 +1,4 @@
-﻿using Librarian.Core.LiterarySource;
+﻿using Librarian.Core.LiterarySources;
 using Librarian.Core.References;
 using System;
 using System.Collections.Generic;

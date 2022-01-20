@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Librarian", "Librarian\Librarian.csproj", "{EE30D377-7A2C-4583-B0C5-B10CCBD4EC3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Librarian.Core", "Librarian.Core\Librarian.Core.csproj", "{D94C2A3F-D8D5-4E15-8656-FA9DB60FC2BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Librarian.Core", "Librarian.Core\Librarian.Core.csproj", "{D94C2A3F-D8D5-4E15-8656-FA9DB60FC2BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Librarian.ConsoleApp", "Librarian.ConsoleApp\Librarian.ConsoleApp.csproj", "{0DE1C534-94A7-4FEC-B8C0-126AB1909AD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Librarian.ConsoleApp", "Librarian.ConsoleApp\Librarian.ConsoleApp.csproj", "{0DE1C534-94A7-4FEC-B8C0-126AB1909AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Librarian.WinForms", "Librarian.WinForms\Librarian.WinForms.csproj", "{04445916-6E92-467C-AD67-C0138C9FB03B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{0DE1C534-94A7-4FEC-B8C0-126AB1909AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DE1C534-94A7-4FEC-B8C0-126AB1909AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DE1C534-94A7-4FEC-B8C0-126AB1909AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04445916-6E92-467C-AD67-C0138C9FB03B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04445916-6E92-467C-AD67-C0138C9FB03B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04445916-6E92-467C-AD67-C0138C9FB03B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04445916-6E92-467C-AD67-C0138C9FB03B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

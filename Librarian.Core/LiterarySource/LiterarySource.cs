@@ -15,5 +15,8 @@ namespace Librarian.Core.LiterarySources
         public string JournalTitle { get; set; }
         public DateTime ReadDate { get; set; }
         public string Source { get; set; }
+        public int EditionNumber { get; set; }
+        public int PageNumber { get; set; }
+        public int PageCount { get; set; }
     }
 }

@@ -9,7 +9,7 @@
         JournalTitle,
         Date,
         Source,
-        EditionNumber,
+        PrintEdition,
         PageNumber,
         PageCount
     }

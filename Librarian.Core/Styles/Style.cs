@@ -1,4 +1,5 @@
 ﻿using Librarian.Core.References;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace Librarian.Core.Styles
             Fields = fields;
             Config = config;
         }
+        [BsonId]
+        public Guid Id { get; set; }
         public FieldType[] Fields { get; set; }
         public StyleConfig Config { get; set; }
     }

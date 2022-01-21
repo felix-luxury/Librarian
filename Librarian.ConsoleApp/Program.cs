@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 using Librarian.Core.LiterarySources;
+using Librarian.Core.MongoDb;
 using Librarian.Core.References;
 using Librarian.Core.Styles;
 
@@ -11,6 +12,25 @@ namespace Librarian.ConsoleApp
     class Program
     {
         static void Main(string[] args)
+        {
+            MongoAdd();
+
+
+        }
+        static void MongoAdd()
+        {
+            MongoDb db = new MongoDb("mongodb://localhost:27017");
+            //var source = GetLiterarySource();
+            //db.InsertLitSource(source);
+            var source1 = db.GetLiterarySources();
+            var source = GetLiterarySource();
+            source.Authors = new string[] { "Иван, О.В.}" };
+
+            db.UpsertLiterarySources(new Guid("{b88082ef-1d07-4dc4-a0bb-d0d5478d8030}"), source);
+            
+            var source2 = db.GetLiterarySources();
+        }
+        static void XmlTest()
         {
             LiterarySource source;
             Style style;

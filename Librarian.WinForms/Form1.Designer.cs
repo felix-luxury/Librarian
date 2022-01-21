@@ -31,6 +31,7 @@ namespace Librarian.WinForms
         {
             this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.Title = new System.Windows.Forms.ColumnHeader();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -41,6 +42,8 @@ namespace Librarian.WinForms
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.Authors = new System.Windows.Forms.ColumnHeader();
+            this.Type = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // button1
@@ -54,12 +57,21 @@ namespace Librarian.WinForms
             // 
             // listView1
             // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Title,
+            this.Authors,
+            this.Type});
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 68);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(246, 322);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // Title
+            // 
+            this.Title.Text = "Название";
             // 
             // button2
             // 
@@ -150,6 +162,14 @@ namespace Librarian.WinForms
             this.button8.Text = "Добавить в .doc";
             this.button8.UseVisualStyleBackColor = true;
             // 
+            // Authors
+            // 
+            this.Authors.Text = "Авторы";
+            // 
+            // Type
+            // 
+            this.Type.Text = "Тип";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -188,6 +208,9 @@ namespace Librarian.WinForms
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.ColumnHeader Title;
+        private System.Windows.Forms.ColumnHeader Authors;
+        private System.Windows.Forms.ColumnHeader Type;
     }
 }
 

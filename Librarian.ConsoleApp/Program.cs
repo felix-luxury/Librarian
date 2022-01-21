@@ -16,23 +16,23 @@ namespace Librarian.ConsoleApp
             Style style;
 
 
-            //source = GetLiterarySource();
-            //style = GetStyle();
-
-
-            //using (FileStream fs = new FileStream("litSource.xml", FileMode.OpenOrCreate))
-            //{
-            //    litSourceFormatter.Serialize(fs, source);
-            //    Console.WriteLine("Лит источник сериализован");
-            //}
-            //using (FileStream fs = new FileStream("style.xml", FileMode.OpenOrCreate))
-            //{
-            //    styleFormatter.Serialize(fs, style);
-            //    Console.WriteLine("Стиль сериализован");
-            //}
+            source = GetLiterarySource();
+            style = GetStyle();
 
             XmlSerializer litSourceFormatter = new XmlSerializer(typeof(LiterarySource));
             XmlSerializer styleFormatter = new XmlSerializer(typeof(Style));
+
+            using (FileStream fs = new FileStream("testLitSource.xml", FileMode.OpenOrCreate))
+            {
+                litSourceFormatter.Serialize(fs, source);
+                Console.WriteLine("Лит источник сериализован");
+            }
+            using (FileStream fs = new FileStream("testStyle.xml", FileMode.OpenOrCreate))
+            {
+                styleFormatter.Serialize(fs, style);
+                Console.WriteLine("Стиль сериализован");
+            }
+
             using (FileStream fs = new FileStream("testLitSource.xml", FileMode.OpenOrCreate))
             {
                 source = (LiterarySource)litSourceFormatter.Deserialize(fs);

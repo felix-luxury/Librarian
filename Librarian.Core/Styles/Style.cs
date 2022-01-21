@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Librarian.Core.Styles
 {
@@ -19,7 +20,6 @@ namespace Librarian.Core.Styles
             Fields = fields;
             Config = config;
         }
-
         public FieldType[] Fields { get; set; }
         public StyleConfig Config { get; set; }
     }

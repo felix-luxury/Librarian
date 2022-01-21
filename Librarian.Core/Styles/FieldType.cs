@@ -8,6 +8,9 @@
         ArticleTitle,
         JournalTitle,
         Date,
-        Source
+        Source,
+        EditionNumber,
+        PageNumber,
+        PageCount
     }
 }

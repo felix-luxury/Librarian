@@ -142,7 +142,7 @@ namespace Librarian.WinForms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Name = "CreateLiterarySource";
-            this.Text = "Добавить лит. источник";
+            this.Text = "Добавить литературный источник";
             this.ResumeLayout(false);
             this.PerformLayout();
 

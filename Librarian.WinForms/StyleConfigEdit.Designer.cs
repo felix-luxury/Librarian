@@ -348,7 +348,7 @@ namespace Librarian.WinForms
             this.Controls.Add(this.authorsPrefixTextBox);
             this.Controls.Add(this.authorsPrefixLabel);
             this.Name = "StyleConfigEdit";
-            this.Text = "StyleConfigEdit";
+            this.Text = "Конфигурация стиля";
             this.ResumeLayout(false);
             this.PerformLayout();
 

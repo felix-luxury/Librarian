@@ -317,6 +317,7 @@ namespace Librarian.WinForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.yearPostfixTextBox);
             this.Controls.Add(this.sourcePostfixTextBox);
             this.Controls.Add(this.sourcePostfixLabel);
             this.Controls.Add(this.sourcePrefixTextBox);
@@ -335,7 +336,6 @@ namespace Librarian.WinForms
             this.Controls.Add(this.titlePostfixLabel);
             this.Controls.Add(this.titlePrefixTextBox);
             this.Controls.Add(this.titlePrefixLabel);
-            this.Controls.Add(this.yearPostfixTextBox);
             this.Controls.Add(this.yearPostfixLabel);
             this.Controls.Add(this.yearPrefixTextBox);
             this.Controls.Add(this.yearPrefixLabel);

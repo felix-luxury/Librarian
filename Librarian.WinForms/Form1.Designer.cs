@@ -32,6 +32,8 @@ namespace Librarian.WinForms
             this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.Title = new System.Windows.Forms.ColumnHeader();
+            this.Authors = new System.Windows.Forms.ColumnHeader();
+            this.Type = new System.Windows.Forms.ColumnHeader();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -42,8 +44,6 @@ namespace Librarian.WinForms
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.Authors = new System.Windows.Forms.ColumnHeader();
-            this.Type = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // button1
@@ -72,6 +72,14 @@ namespace Librarian.WinForms
             // Title
             // 
             this.Title.Text = "Название";
+            // 
+            // Authors
+            // 
+            this.Authors.Text = "Авторы";
+            // 
+            // Type
+            // 
+            this.Type.Text = "Тип";
             // 
             // button2
             // 
@@ -119,7 +127,7 @@ namespace Librarian.WinForms
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(345, 25);
+            this.button5.Location = new System.Drawing.Point(345, 24);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(118, 23);
             this.button5.TabIndex = 8;
@@ -161,14 +169,6 @@ namespace Librarian.WinForms
             this.button8.TabIndex = 12;
             this.button8.Text = "Добавить в .doc";
             this.button8.UseVisualStyleBackColor = true;
-            // 
-            // Authors
-            // 
-            this.Authors.Text = "Авторы";
-            // 
-            // Type
-            // 
-            this.Type.Text = "Тип";
             // 
             // Form1
             // 

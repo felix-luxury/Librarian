@@ -11,16 +11,16 @@ namespace Librarian.Core.LiterarySources
     public class LiterarySource
     {
         [BsonId]
-        public Guid Id { get; set; }
-        public string[] Authors { get; set; }
+        public Guid Id { get; set; } //
+        public string[] Authors { get; set; } //
         public PublishInfo PublishInfo { get; set; }
-        public string Title { get; set; }
-        public string JournalTitle { get; set; }
-        public DateTime ReadDate { get; set; }
+        public string Title { get; set; } //
+        public string JournalTitle { get; set; } //
+        public DateTime ReadDate { get; set; } 
         public string Source { get; set; }
         public int EditionNumber { get; set; }
         public int PageNumber { get; set; }
         public int PageCount { get; set; }
-        public LiterarySourceType LiterarySourceType { get; set; }
+        public LiterarySourceType LiterarySourceType { get; set; } //
     }
 }

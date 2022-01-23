@@ -19,7 +19,7 @@ namespace Librarian.ConsoleApp
         }
         static void MongoAdd()
         {
-            MongoDb db = new MongoDb("mongodb://localhost:27017");
+            MongoConnection db = new MongoConnection("mongodb://localhost:27017");
             //var source = GetLiterarySource();
             //db.InsertLitSource(source);
             var source1 = db.GetLiterarySources();

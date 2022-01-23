@@ -15,7 +15,7 @@ namespace Librarian.WinForms
 {
     public partial class Form1 : Form
     {
-        private MongoDb _mongoDb;
+        private MongoConnection _mongoDb;
         private List<LiterarySource> _literarySources;
         private List<Style> _styles;
         public List<LiterarySource> SelectedLiterarySources
@@ -34,7 +34,7 @@ namespace Librarian.WinForms
         public Form1()
         {
             InitializeComponent();
-            _mongoDb = new MongoDb("mongodb://localhost:27017");
+            _mongoDb = new MongoConnection("mongodb://localhost:27017");
             _literarySources = new List<LiterarySource>();
             _styles = new List<Style>();
             LoadLitSources();
@@ -57,11 +57,13 @@ namespace Librarian.WinForms
 
         private void LoadLitSources()
         {
+
             _literarySources = _mongoDb.GetLiterarySources();
             UpdateLitSourcesListView();
         }
         private void UpdateLitSourcesListView()
         {
+            //litSourcesListView.Clear();
             ListViewItem item = new ListViewItem();
             for (int i = 0; i < _literarySources.Count; i++)
             {
@@ -105,9 +107,10 @@ namespace Librarian.WinForms
 
         private void createLitSource_Click(object sender, EventArgs e)
         {
-            using(CreateLiterarySource form = new CreateLiterarySource())
+            using(CreateLiterarySource form = new CreateLiterarySource(_mongoDb))
             {
-                form.Show();
+                form.ShowDialog();
+
                 LoadLitSources();
             }
         }

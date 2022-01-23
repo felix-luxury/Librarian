@@ -10,13 +10,13 @@ using Librarian.Core.LiterarySources;
 
 namespace Librarian.Core.MongoDb
 {
-    public class MongoDb
+    public class MongoConnection
     {
         private IMongoDatabase _db;
         public const string DbName = "Librarian";
         public const string StyleCollectionName = "Styles";
         public const string LitSourceCollectionName = "LiterarySources";
-        public MongoDb(string connectionString)
+        public MongoConnection(string connectionString)
         {
             var client = new MongoClient(connectionString);
             _db = client.GetDatabase(DbName);

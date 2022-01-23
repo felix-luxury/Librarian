@@ -23,6 +23,7 @@ namespace Librarian.Core.Styles
         }
         [BsonId]
         public Guid Id { get; set; }
+        public string Name { get; set; }
         public FieldType[] Fields { get; set; }
         public StyleConfig Config { get; set; }
     }

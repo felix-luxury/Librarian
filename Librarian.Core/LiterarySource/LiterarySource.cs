@@ -18,5 +18,6 @@ namespace Librarian.Core.LiterarySources
         public int EditionNumber { get; set; }
         public int PageNumber { get; set; }
         public int PageCount { get; set; }
+        public LiterarySourceType LiterarySourceType { get; set; }
     }
 }

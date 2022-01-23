@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Librarian.Core.LiterarySources
 {
-    enum LiterarySourceType
+    public enum LiterarySourceType
     {
+        Default,
         Book,
         JournalArticle,
         ScienceArticle,

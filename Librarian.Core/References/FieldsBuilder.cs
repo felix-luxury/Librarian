@@ -39,5 +39,19 @@ namespace Librarian.Core.References
         {
             return new SimpleField(literarySource.Source, config.SourcePrefix, config.SourcePostfix);
         }
+        internal static SimpleField CreatePageNumberField(LiterarySource literarySource, StyleConfig config)
+        {
+            return new SimpleField(literarySource.Source, config.SourcePrefix, config.SourcePostfix);
+        }
+
+        internal static SimpleField CreatePrintEditionField(LiterarySource literarySource, StyleConfig config)
+        {
+            return new SimpleField(literarySource.Source, config.SourcePrefix, config.SourcePostfix);
+        }
+
+        internal static SimpleField CreatePageCountField(LiterarySource literarySource, StyleConfig config)
+        {
+            return new SimpleField(literarySource.Source, config.SourcePrefix, config.SourcePostfix);
+        }
     }
 }

@@ -76,7 +76,7 @@ namespace Librarian.WinForms
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(139, 124);
+            this.button3.Location = new System.Drawing.Point(139, 140);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(30, 30);
             this.button3.TabIndex = 4;

@@ -51,6 +51,15 @@ namespace Librarian.Core.References
                     case FieldType.Source:
                         field = FieldsBuilder.CreateSourceField(LiterarySource, Style.Config);
                         break;
+                    case FieldType.PrintEdition:
+                        field = FieldsBuilder.CreatePrintEditionField(LiterarySource, Style.Config);
+                        break;
+                    case FieldType.PageCount:
+                        field = FieldsBuilder.CreatePageCountField(LiterarySource, Style.Config);
+                        break;
+                    case FieldType.PageNumber:
+                        field = FieldsBuilder.CreatePageNumberField(LiterarySource, Style.Config);
+                        break;
                     default:
                         throw new ArgumentException("Неизвестный тип поля");
                 }

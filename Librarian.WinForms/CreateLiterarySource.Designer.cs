@@ -37,7 +37,7 @@ namespace Librarian.WinForms
             this.authorsListBox = new System.Windows.Forms.ListBox();
             this.authorDownBtn = new System.Windows.Forms.Button();
             this.authorUpBtn = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.titleTB = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.journalTitleTB = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -133,12 +133,12 @@ namespace Librarian.WinForms
             this.authorUpBtn.UseVisualStyleBackColor = true;
             this.authorUpBtn.Click += new System.EventHandler(this.authorUpBtn_Click);
             // 
-            // textBox2
+            // titleTB
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 23);
-            this.textBox2.TabIndex = 9;
+            this.titleTB.Location = new System.Drawing.Point(12, 75);
+            this.titleTB.Name = "titleTB";
+            this.titleTB.Size = new System.Drawing.Size(121, 23);
+            this.titleTB.TabIndex = 9;
             // 
             // label3
             // 
@@ -327,7 +327,7 @@ namespace Librarian.WinForms
             this.Controls.Add(this.readDateDP);
             this.Controls.Add(this.journalTitleTB);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.titleTB);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.authorDownBtn);
             this.Controls.Add(this.authorUpBtn);
@@ -354,7 +354,7 @@ namespace Librarian.WinForms
         private System.Windows.Forms.ListBox authorsListBox;
         private System.Windows.Forms.Button authorDownBtn;
         private System.Windows.Forms.Button authorUpBtn;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox titleTB;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox journalTitleTB;
         private System.Windows.Forms.Label label4;

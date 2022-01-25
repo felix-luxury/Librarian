@@ -1,6 +1,7 @@
 ﻿using Librarian.Core.LiterarySources;
 using Librarian.Core.MongoDb;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Librarian.WinForms
@@ -94,29 +95,78 @@ namespace Librarian.WinForms
             {
             }
         }
-
+        private string[] GetAuthors()
+        {
+            List<string> authors = new List<string>();
+            foreach (var author in authorsListBox.Items)
+            {
+                authors.Add(author.ToString());
+            }
+            return authors.ToArray();
+        }
         private void saveBtn_Click(object sender, EventArgs e)
         {
             LiterarySourceType selectedType = (LiterarySourceType)(sourceTypeComboBox.SelectedItem ?? LiterarySourceType.Default);
 
             LiterarySource source = new LiterarySource();
+            PublishInfo publishInfo = new PublishInfo(); 
+            source.Authors = GetAuthors();
+            source.Title = titleTB.Text;
             switch (selectedType)
             {
                 case LiterarySourceType.Default:
                     MessageBox.Show("Пожалуйста, выберите тип источника");
                     break;
                 case LiterarySourceType.Book:
+                    source.LiterarySourceType = LiterarySourceType.Book;
+                    source.EditionNumber = editionNumberTB.Text;
+                    source.PageCount = pageCountTB.Text;
+
+                    publishInfo.City = cityTB.Text;
+                    publishInfo.Publisher = publisherTB.Text;
+                    publishInfo.Year = publishYearTB.Text;
+
+                    source.PublishInfo = publishInfo;
                     break;
                 case LiterarySourceType.JournalArticle:
+                    source.LiterarySourceType = LiterarySourceType.JournalArticle;
+                    source.EditionNumber = editionNumberTB.Text;
+                    source.PageCount = pageCountTB.Text;
+                    source.JournalTitle = journalTitleTB.Text;
+
+                    publishInfo.City = cityTB.Text;
+                    publishInfo.Publisher = publisherTB.Text;
+                    publishInfo.Year = publishYearTB.Text;
+
+                    source.PublishInfo = publishInfo;
                     break;
                 case LiterarySourceType.ScienceArticle:
+                    source.LiterarySourceType = LiterarySourceType.ScienceArticle;
+                    source.PageCount = pageCountTB.Text;
+
+                    publishInfo.City = cityTB.Text;
+                    publishInfo.Publisher = publisherTB.Text;
+                    publishInfo.Year = publishYearTB.Text;
+
+                    source.PublishInfo = publishInfo;
                     break;
                 case LiterarySourceType.WebArtice:
+                    source.LiterarySourceType = LiterarySourceType.WebArtice;
+                    source.Source = urlTB.Text;
+                    source.ReadDate = readDateDP.Value;
+
+                    publishInfo.City = cityTB.Text;
+                    publishInfo.Publisher = publisherTB.Text;
+                    publishInfo.Year = publishYearTB.Text;
+
+                    source.PublishInfo = publishInfo;
                     break;
                 default:
                     break;
             }
-            //_mongo.InsertLitSource();
+            _mongo.InsertLitSource(source);
+            MessageBox.Show("Источник добавлен");
+
         }
     }
 }

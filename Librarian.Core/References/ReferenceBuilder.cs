@@ -39,19 +39,19 @@ namespace Librarian.Core.References
                     case FieldType.Year:
                         field = FieldsBuilder.CreateYearField(LiterarySource, Style.Config);
                         break;
-                    case FieldType.ArticleTitle:
+                    case FieldType.Title:
                         field = FieldsBuilder.CreateArticleTitleField(LiterarySource, Style.Config);
                         break;
                     case FieldType.JournalTitle:
                         field = FieldsBuilder.CreateJournalTitleField(LiterarySource, Style.Config);
                         break;
-                    case FieldType.Date:
+                    case FieldType.ReadDate:
                         field = FieldsBuilder.CreateDateField(LiterarySource, Style.Config);
                         break;
                     case FieldType.Source:
                         field = FieldsBuilder.CreateSourceField(LiterarySource, Style.Config);
                         break;
-                    case FieldType.PrintEdition:
+                    case FieldType.EditionNumber:
                         field = FieldsBuilder.CreatePrintEditionField(LiterarySource, Style.Config);
                         break;
                     case FieldType.PageCount:

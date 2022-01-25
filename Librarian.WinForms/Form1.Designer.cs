@@ -40,7 +40,7 @@ namespace Librarian.WinForms
             this.button3 = new System.Windows.Forms.Button();
             this.stylesComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.createStyle = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -127,14 +127,15 @@ namespace Librarian.WinForms
             this.label1.TabIndex = 6;
             this.label1.Text = "Выбрать стиль";
             // 
-            // button4
+            // createStyle
             // 
-            this.button4.Location = new System.Drawing.Point(221, 24);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(118, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Создать стиль";
-            this.button4.UseVisualStyleBackColor = true;
+            this.createStyle.Location = new System.Drawing.Point(221, 24);
+            this.createStyle.Name = "createStyle";
+            this.createStyle.Size = new System.Drawing.Size(118, 23);
+            this.createStyle.TabIndex = 7;
+            this.createStyle.Text = "Создать стиль";
+            this.createStyle.UseVisualStyleBackColor = true;
+            this.createStyle.Click += new System.EventHandler(this.createStyle_Click);
             // 
             // button5
             // 
@@ -212,7 +213,7 @@ namespace Librarian.WinForms
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.createStyle);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.stylesComboBox);
             this.Controls.Add(this.button3);
@@ -234,7 +235,7 @@ namespace Librarian.WinForms
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox stylesComboBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button createStyle;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;

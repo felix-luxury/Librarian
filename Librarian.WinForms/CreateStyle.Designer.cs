@@ -29,41 +29,44 @@ namespace Librarian.WinForms
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.fieldsLB = new System.Windows.Forms.ListBox();
+            this.addFieldBtn = new System.Windows.Forms.Button();
+            this.fieldsCB = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.configBtn = new System.Windows.Forms.Button();
+            this.saveStyle = new System.Windows.Forms.Button();
+            this.styleNameTB = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // listBox1
+            // fieldsLB
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(13, 88);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 154);
-            this.listBox1.TabIndex = 0;
+            this.fieldsLB.FormattingEnabled = true;
+            this.fieldsLB.ItemHeight = 15;
+            this.fieldsLB.Location = new System.Drawing.Point(13, 88);
+            this.fieldsLB.Name = "fieldsLB";
+            this.fieldsLB.Size = new System.Drawing.Size(120, 154);
+            this.fieldsLB.TabIndex = 0;
             // 
-            // button1
+            // addFieldBtn
             // 
-            this.button1.Location = new System.Drawing.Point(12, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Добавить поле";
-            this.button1.UseVisualStyleBackColor = true;
+            this.addFieldBtn.Location = new System.Drawing.Point(12, 41);
+            this.addFieldBtn.Name = "addFieldBtn";
+            this.addFieldBtn.Size = new System.Drawing.Size(121, 23);
+            this.addFieldBtn.TabIndex = 1;
+            this.addFieldBtn.Text = "Добавить поле";
+            this.addFieldBtn.UseVisualStyleBackColor = true;
+            this.addFieldBtn.Click += new System.EventHandler(this.addFieldBtn_Click);
             // 
-            // comboBox1
+            // fieldsCB
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 2;
+            this.fieldsCB.FormattingEnabled = true;
+            this.fieldsCB.Location = new System.Drawing.Point(12, 12);
+            this.fieldsCB.Name = "fieldsCB";
+            this.fieldsCB.Size = new System.Drawing.Size(121, 23);
+            this.fieldsCB.TabIndex = 2;
             // 
             // button2
             // 
@@ -92,37 +95,57 @@ namespace Librarian.WinForms
             this.label1.TabIndex = 5;
             this.label1.Text = "Список полей";
             // 
-            // button4
+            // configBtn
             // 
-            this.button4.Location = new System.Drawing.Point(139, 176);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(130, 66);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Настроить\r\nконфиги";
-            this.button4.UseVisualStyleBackColor = true;
+            this.configBtn.Location = new System.Drawing.Point(139, 176);
+            this.configBtn.Name = "configBtn";
+            this.configBtn.Size = new System.Drawing.Size(130, 66);
+            this.configBtn.TabIndex = 6;
+            this.configBtn.Text = "Настроить\r\nконфиги";
+            this.configBtn.UseVisualStyleBackColor = true;
+            this.configBtn.Click += new System.EventHandler(this.configBtn_Click);
             // 
-            // button5
+            // saveStyle
             // 
-            this.button5.Location = new System.Drawing.Point(13, 248);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(121, 23);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Сохранить стиль";
-            this.button5.UseVisualStyleBackColor = true;
+            this.saveStyle.Location = new System.Drawing.Point(13, 248);
+            this.saveStyle.Name = "saveStyle";
+            this.saveStyle.Size = new System.Drawing.Size(121, 23);
+            this.saveStyle.TabIndex = 7;
+            this.saveStyle.Text = "Сохранить стиль";
+            this.saveStyle.UseVisualStyleBackColor = true;
+            this.saveStyle.Click += new System.EventHandler(this.saveStyle_Click);
+            // 
+            // styleNameTB
+            // 
+            this.styleNameTB.Location = new System.Drawing.Point(139, 41);
+            this.styleNameTB.Name = "styleNameTB";
+            this.styleNameTB.Size = new System.Drawing.Size(100, 23);
+            this.styleNameTB.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(139, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 15);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Название стиля";
             // 
             // CreateStyle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(274, 285);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.styleNameTB);
+            this.Controls.Add(this.saveStyle);
+            this.Controls.Add(this.configBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.fieldsCB);
+            this.Controls.Add(this.addFieldBtn);
+            this.Controls.Add(this.fieldsLB);
             this.Name = "CreateStyle";
             this.Text = "Создать стиль";
             this.ResumeLayout(false);
@@ -132,13 +155,15 @@ namespace Librarian.WinForms
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ListBox fieldsLB;
+        private System.Windows.Forms.Button addFieldBtn;
+        private System.Windows.Forms.ComboBox fieldsCB;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button configBtn;
+        private System.Windows.Forms.Button saveStyle;
+        private System.Windows.Forms.TextBox styleNameTB;
+        private System.Windows.Forms.Label label2;
     }
 }

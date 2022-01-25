@@ -4,12 +4,14 @@
     public enum FieldType
     {
         Authors,
+        City,
+        Publisher,
         Year,
-        ArticleTitle,
+        Title,
         JournalTitle,
-        Date,
+        ReadDate,
         Source,
-        PrintEdition,
+        EditionNumber,
         PageNumber,
         PageCount
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Librarian.Core.Styles;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,69 +13,60 @@ namespace Librarian.WinForms
 {
     public partial class StyleConfigEdit : Form
     {
-        public StyleConfigEdit()
+        private StyleConfig _config;
+        public StyleConfigEdit(StyleConfig config)
         {
             InitializeComponent();
+            _config = config;
+
+            authorsPrefixTextBox.Text = _config.AuthorPrefix;
+            authorsPostfixTextBox.Text = _config.AuthorPostfix;
+            authorsDelimiterTextBox.Text = _config.AuthorDelimiter;
+            authorsLastDelimiterTextBox.Text = _config.AuthorLastDelimiter;
+            yearPrefixTextBox.Text = _config.YearPrefix;
+            yearPostfixTextBox.Text = _config.YearPostfix;
+            titlePrefixTextBox.Text = _config.TitlePrefix;
+            titlePostfixTextBox.Text = _config.TitlePostfix;
+            journalPrefixTextBox.Text = _config.JournalTitlePrefix;
+            journalPostfixTextBox.Text = _config.JournalTitlePostfix;
+            datePrefixTextBox.Text = _config.DatePrefix;
+            datePostfixTextBox.Text = _config.DatePostfix;
+            dateFormatTextBox.Text = _config.DateFormat;
+            sourcePrefixTextBox.Text = _config.SourcePrefix;
+            sourcePostfixTextBox.Text = _config.SourcePostfix;
+            EditionNumberPrefixTB.Text = _config.EditionNumberPrefix;
+            EditionNumberPostfixTB.Text = _config.EditionNumberPostfix;
+            PageNumberPrefixTB4.Text = _config.PageNumberPrefix;
+            PageNumberPostfixTB.Text = _config.PageNumberPostfix;
+            PageCountPrefixTB.Text = _config.PageCountPrefix;
+            PageCountPostfixTB.Text = _config.PageCountPostfix;
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void saveConfig_Click(object sender, EventArgs e)
         {
+            _config.AuthorPrefix = authorsPrefixTextBox.Text;
+            _config.AuthorPostfix = authorsPostfixTextBox.Text;
+            _config.AuthorDelimiter = authorsDelimiterTextBox.Text;
+            _config.AuthorLastDelimiter = authorsLastDelimiterTextBox.Text;
+            _config.YearPrefix = yearPrefixTextBox.Text;
+            _config.YearPostfix = yearPostfixTextBox.Text;
+            _config.TitlePrefix = titlePrefixTextBox.Text;
+            _config.TitlePostfix = titlePostfixTextBox.Text;
+            _config.JournalTitlePrefix = journalPrefixTextBox.Text;
+            _config.JournalTitlePostfix = journalPostfixTextBox.Text;
+            _config.DatePrefix = datePrefixTextBox.Text;
+            _config.DatePostfix = datePostfixTextBox.Text;
+            _config.DateFormat = dateFormatTextBox.Text;
+            _config.SourcePrefix = sourcePrefixTextBox.Text;
+            _config.SourcePostfix = sourcePostfixTextBox.Text;
+            _config.EditionNumberPrefix = EditionNumberPrefixTB.Text;
+            _config.EditionNumberPostfix = EditionNumberPostfixTB.Text;
+            _config.PageNumberPrefix = PageNumberPrefixTB4.Text;
+            _config.PageNumberPostfix = PageNumberPostfixTB.Text;
+            _config.PageCountPrefix = PageCountPrefixTB.Text;
+            _config.PageCountPostfix = PageCountPostfixTB.Text;
 
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
     }
 }

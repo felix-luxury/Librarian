@@ -8,13 +8,15 @@ namespace Librarian.Core.Styles
 {
     public class StyleBuilder
     {
-        public StyleBuilder(StyleConfig config)
+        public StyleBuilder(string styleName, StyleConfig config)
         {
+            StyleName = styleName;
             Fields = new List<FieldType>();
             Config = config;
         }
         public List<FieldType> Fields { get; set; }
         public StyleConfig Config { get; set; }
+        public string StyleName { get; set; }
         public StyleBuilder AddAuthors()
         {
             Fields.Add(FieldType.Authors);
@@ -27,7 +29,7 @@ namespace Librarian.Core.Styles
         }
         public StyleBuilder AddArticleTitle()
         {
-            Fields.Add(FieldType.ArticleTitle);
+            Fields.Add(FieldType.Title);
             return this;
         }
         public StyleBuilder AddJournalTitle()
@@ -37,7 +39,7 @@ namespace Librarian.Core.Styles
         }
         public StyleBuilder AddDate()
         {
-            Fields.Add(FieldType.Date);
+            Fields.Add(FieldType.ReadDate);
             return this;
         }
         public StyleBuilder AddSource()
@@ -47,7 +49,7 @@ namespace Librarian.Core.Styles
         }
         public Style Build()
         {
-            return new Style(Fields.ToArray(), Config);
+            return new Style(StyleName, Fields.ToArray(), Config);
         }
     }
 }

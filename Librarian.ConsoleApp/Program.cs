@@ -79,7 +79,7 @@ namespace Librarian.ConsoleApp
             litSource.Authors = authors;
             litSource.Title = "Материализация Бреда";
             litSource.JournalTitle = "Вестник психиатрии";
-            pub.Year = 2000;
+            pub.Year = "2000";
             litSource.PublishInfo = pub;
             litSource.ReadDate = DateTime.Today;
             litSource.Source = "https://google.com";
@@ -104,7 +104,7 @@ namespace Librarian.ConsoleApp
             config.YearPostfix = "). ";
             config.YearPrefix = "(";
 
-            StyleBuilder builder = new StyleBuilder(config);
+            StyleBuilder builder = new StyleBuilder("Test", config);
             builder
                 .AddAuthors()
                 .AddYear()

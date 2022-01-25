@@ -16,8 +16,9 @@ namespace Librarian.Core.Styles
         {
 
         }
-        public Style(FieldType[] fields, StyleConfig config)
+        public Style(string name, FieldType[] fields, StyleConfig config)
         {
+            Name = name;
             Fields = fields;
             Config = config;
         }

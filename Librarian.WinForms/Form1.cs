@@ -114,5 +114,15 @@ namespace Librarian.WinForms
                 LoadLitSources();
             }
         }
+
+        private void createStyle_Click(object sender, EventArgs e)
+        {
+            using (CreateStyle form = new CreateStyle(_mongoDb))
+            {
+                form.ShowDialog();
+
+                LoadStyles();
+            }
+        }
     }
 }

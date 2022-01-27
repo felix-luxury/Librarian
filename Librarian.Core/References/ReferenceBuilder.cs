@@ -60,6 +60,9 @@ namespace Librarian.Core.References
                     case FieldType.PageNumber:
                         field = FieldsBuilder.CreatePageNumberField(LiterarySource, Style.Config);
                         break;
+                    case FieldType.Publisher:
+                        field = FieldsBuilder.CreatePublisherField(LiterarySource, Style.Config);
+                        break;
                     default:
                         throw new ArgumentException("Неизвестный тип поля");
                 }

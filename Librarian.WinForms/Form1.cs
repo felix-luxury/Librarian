@@ -1,11 +1,13 @@
 ﻿using Librarian.Core.LiterarySources;
 using Librarian.Core.MongoDb;
+using Librarian.Core.References;
 using Librarian.Core.Styles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +51,8 @@ namespace Librarian.WinForms
 
         private void UpdateStylesComboBox()
         {
+            stylesComboBox.Items.Clear();
+            stylesComboBox.Text = "";
             foreach (var item in _styles)
             {
                 stylesComboBox.Items.Add(item.Name);
@@ -63,7 +67,7 @@ namespace Librarian.WinForms
         }
         private void UpdateLitSourcesListView()
         {
-            //litSourcesListView.Clear();
+            litSourcesListView.Items.Clear();
             ListViewItem item = new ListViewItem();
             for (int i = 0; i < _literarySources.Count; i++)
             {
@@ -71,8 +75,8 @@ namespace Librarian.WinForms
                 item.SubItems.Add(String.Join("; ", _literarySources[i].Authors));
                 item.SubItems.Add(_literarySources[i].LiterarySourceType.ToString());
                 item.SubItems.Add(i.ToString());
+                litSourcesListView.Items.Add(item);
             }
-            litSourcesListView.Items.Add(item);
         }
         private void UpdateSelectedLitSourcesListView()
         {
@@ -123,6 +127,88 @@ namespace Librarian.WinForms
 
                 LoadStyles();
             }
+        }
+
+        private void ExportToTxt_Click(object sender, EventArgs e)
+        {
+            if (stylesComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Сначала выберите стиль");
+                return;
+            }
+            if (selectedLitSourcesListView.Items.Count == 0)
+            {
+                MessageBox.Show("Сначала выберите лит. источники");
+                return;
+            }
+            
+            string styleName = stylesComboBox.SelectedItem.ToString();
+            Style style = _styles.Where(x => x.Name == styleName).First();
+            List<string> litSourceTitle = new List<string>();
+            List<LiterarySource> sources  = new List<LiterarySource>();
+            foreach (var item in selectedLitSourcesListView.Items)
+            {
+                var lvItem = item as ListViewItem;
+                litSourceTitle.Add(lvItem.Text);
+            }
+            foreach (var title in litSourceTitle)
+            {
+                sources.Add(_literarySources.Where(x => x.Title == title).First());
+            }
+
+            StringBuilder sb = new StringBuilder();
+            int index = 1;
+            foreach (var source in sources)
+            {
+                var builder = new ReferenceBuilder(source, style);
+                sb.Append($"{index}. {builder.Build()} \n");
+                index++;
+            }
+            File.WriteAllText($"Литературные источники {DateTime.Now.ToString("dd.MM.yy HH-mm-ss")}.txt", sb.ToString());
+            //Console.WriteLine(builder.Build());
+        }
+
+        private void editStyle_Click(object sender, EventArgs e)
+        {
+            if (stylesComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Сначала выберите стиль");
+            }
+            else
+            {
+                string styleName = stylesComboBox.SelectedItem.ToString();
+                Style style = _styles.Where(x => x.Name == styleName).First();
+                using (CreateStyle form = new CreateStyle(_mongoDb, style))
+                {
+                    form.ShowDialog();
+
+                    LoadStyles();
+                }
+            }
+        }
+
+        private void EditSource_Click(object sender, EventArgs e)
+        {
+            if (litSourcesListView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Сначала выберите источник");
+            }
+            else
+            {
+                string title = litSourcesListView.SelectedItems[0].Text;
+                LiterarySource source = _literarySources.Where(x => x.Title == title).First();
+                using (CreateLiterarySource form = new CreateLiterarySource(_mongoDb, source))
+                {
+                    form.ShowDialog();
+
+                    LoadLitSources();
+                }
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -41,17 +41,22 @@ namespace Librarian.Core.References
         }
         internal static SimpleField CreatePageNumberField(LiterarySource literarySource, StyleConfig config)
         {
-            return new SimpleField(literarySource.Source, config.SourcePrefix, config.SourcePostfix);
+            return new SimpleField(literarySource.Source, config.PageNumberPrefix, config.PageNumberPostfix);
         }
 
         internal static SimpleField CreatePrintEditionField(LiterarySource literarySource, StyleConfig config)
         {
-            return new SimpleField(literarySource.Source, config.SourcePrefix, config.SourcePostfix);
+            return new SimpleField(literarySource.Source, config.PrintEditionPrefix, config.PrintEditionPostfix);
         }
 
         internal static SimpleField CreatePageCountField(LiterarySource literarySource, StyleConfig config)
         {
-            return new SimpleField(literarySource.Source, config.SourcePrefix, config.SourcePostfix);
+            return new SimpleField(literarySource.Source, config.PageCountPrefix, config.PageCountPostfix);
+        }
+
+        internal static BaseField CreatePublisherField(LiterarySource literarySource, StyleConfig config)
+        {
+            return new SimpleField(literarySource.Source, config.PublisherPrefix, config.PublisherPostfix);
         }
     }
 }

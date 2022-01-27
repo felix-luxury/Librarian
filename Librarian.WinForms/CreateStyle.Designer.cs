@@ -49,6 +49,7 @@ namespace Librarian.WinForms
             this.fieldsLB.Name = "fieldsLB";
             this.fieldsLB.Size = new System.Drawing.Size(120, 154);
             this.fieldsLB.TabIndex = 0;
+            this.fieldsLB.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.fieldsLB_MouseDoubleClick);
             // 
             // addFieldBtn
             // 
@@ -101,7 +102,7 @@ namespace Librarian.WinForms
             this.configBtn.Name = "configBtn";
             this.configBtn.Size = new System.Drawing.Size(130, 66);
             this.configBtn.TabIndex = 6;
-            this.configBtn.Text = "Настроить\r\nконфиги";
+            this.configBtn.Text = "Конфигурация \r\nстиля";
             this.configBtn.UseVisualStyleBackColor = true;
             this.configBtn.Click += new System.EventHandler(this.configBtn_Click);
             // 

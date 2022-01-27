@@ -21,8 +21,10 @@ namespace Librarian.Core.Styles
         public string YearPostfix { get; set; }
         public string TitlePrefix { get; set; }
         public string TitlePostfix { get; set; }
+        public string JournalFontStyle { get; set; }
         public string JournalTitlePrefix { get; set; }
         public string JournalTitlePostfix { get; set; }
+        public string JournalTitleFontStyle { get; set; }
         public string DatePrefix { get; set; }
         public string DatePostfix { get; set; }
         public string DateFormat { get; set; }
@@ -34,5 +36,11 @@ namespace Librarian.Core.Styles
         public string PageNumberPostfix { get; set; }
         public string PageCountPrefix { get; set; }
         public string PageCountPostfix { get; set; }
+        public string CityPrefix { get; set; }
+        public string CityPostfix { get; set; }
+        public string PublisherPrefix { get; set; }
+        public string PublisherPostfix { get; set; }
+        public string PrintEditionPrefix { get; set; }
+        public string PrintEditionPostfix { get; set; }
     }
 }

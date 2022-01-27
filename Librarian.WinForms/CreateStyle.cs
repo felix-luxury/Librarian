@@ -16,6 +16,9 @@ namespace Librarian.WinForms
     {
         private StyleConfig _config;
         private MongoConnection _mongo;
+        private Style _style;
+        private bool _idEdit = false;
+
         public CreateStyle(MongoConnection mongoConnection)
         {
             InitializeComponent();
@@ -32,6 +35,18 @@ namespace Librarian.WinForms
             fieldsCB.Items.Add(FieldType.EditionNumber);
             fieldsCB.Items.Add(FieldType.Source);
             fieldsCB.Items.Add(FieldType.Year);
+        }
+
+        public CreateStyle(MongoConnection mongoConnection, Style style) : this(mongoConnection)
+        {
+            _style = style;
+            _idEdit = true;
+            _config = style.Config;
+            styleNameTB.Text = style.Name;
+            foreach (var field in style.Fields)
+            {
+                fieldsLB.Items.Add(field);
+            }
         }
 
         private void addFieldBtn_Click(object sender, EventArgs e)
@@ -61,12 +76,30 @@ namespace Librarian.WinForms
         }
         private void saveStyle_Click(object sender, EventArgs e)
         {
-            FieldType[] fields = GetFields();
-            Style style = new Style(styleNameTB.Text, fields, _config);
-            _mongo.InsertStyle(style);
+            if (_idEdit)
+            {
+                _style.Config = _config;
+                _style.Name = styleNameTB.Text;
+                _style.Fields = GetFields();
+                _mongo.UpsertStyle(_style.Id, _style);
+            }
+            else
+            {
+                FieldType[] fields = GetFields();
+                Style style = new Style(styleNameTB.Text, fields, _config);
+                _mongo.InsertStyle(style);
+            }
 
             MessageBox.Show("Стиль сохранён");
             this.Close();
+        }
+
+        private void fieldsLB_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (fieldsLB.SelectedItems.Count == 1)
+            {
+                fieldsLB.Items.Remove(fieldsLB.SelectedItems[0]);
+            }
         }
     }
 }

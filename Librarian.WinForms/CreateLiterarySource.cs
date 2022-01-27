@@ -9,6 +9,9 @@ namespace Librarian.WinForms
     public partial class CreateLiterarySource : Form
     {
         private MongoConnection _mongo;
+        private LiterarySource _source;
+        private bool _isEdit;
+
         public CreateLiterarySource(MongoConnection mongoConnection)
         {
             InitializeComponent();
@@ -18,6 +21,17 @@ namespace Librarian.WinForms
             sourceTypeComboBox.Items.Add(LiterarySourceType.ScienceArticle);
             sourceTypeComboBox.Items.Add(LiterarySourceType.WebArtice);
             HideAllFields();
+        }
+
+        public CreateLiterarySource(MongoConnection mongoConnection, LiterarySource source) : this(mongoConnection)
+        {
+            _source = source;
+            sourceTypeComboBox.SelectedItem = source.LiterarySourceType;
+            foreach (var author in source.Authors)
+            {
+                authorsListBox.Items.Add(author);
+            }
+            titleTB.Text = source.Title;
         }
 
         private void addAuthorBtn_Click(object sender, EventArgs e)
@@ -52,6 +66,7 @@ namespace Librarian.WinForms
                     cityTB.Visible = true;
                     publisherTB.Visible = true;
                     publishYearTB.Visible = true;
+                    journalTitleTB.Visible = true;
                     break;
                 case LiterarySourceType.JournalArticle:
                     editionNumberTB.Visible = true;

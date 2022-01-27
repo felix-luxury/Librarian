@@ -31,7 +31,7 @@ namespace Librarian.WinForms
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.addSourceBtn = new System.Windows.Forms.Button();
             this.litSourcesListView = new System.Windows.Forms.ListView();
             this.Title = new System.Windows.Forms.ColumnHeader();
             this.Authors = new System.Windows.Forms.ColumnHeader();
@@ -41,25 +41,26 @@ namespace Librarian.WinForms
             this.stylesComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.createStyle = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.ExportToTxt = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.selectedLitSourcesListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.editStyle = new System.Windows.Forms.Button();
+            this.EditSource = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // addSourceBtn
             // 
-            this.button1.Location = new System.Drawing.Point(12, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 53);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Добавить\r\nисточник";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.createLitSource_Click);
+            this.addSourceBtn.Location = new System.Drawing.Point(12, 9);
+            this.addSourceBtn.Name = "addSourceBtn";
+            this.addSourceBtn.Size = new System.Drawing.Size(76, 53);
+            this.addSourceBtn.TabIndex = 0;
+            this.addSourceBtn.Text = "Добавить\r\nисточник";
+            this.addSourceBtn.UseVisualStyleBackColor = true;
+            this.addSourceBtn.Click += new System.EventHandler(this.createLitSource_Click);
             // 
             // litSourcesListView
             // 
@@ -113,15 +114,15 @@ namespace Librarian.WinForms
             // stylesComboBox
             // 
             this.stylesComboBox.FormattingEnabled = true;
-            this.stylesComboBox.Location = new System.Drawing.Point(94, 25);
+            this.stylesComboBox.Location = new System.Drawing.Point(219, 25);
             this.stylesComboBox.Name = "stylesComboBox";
-            this.stylesComboBox.Size = new System.Drawing.Size(121, 23);
+            this.stylesComboBox.Size = new System.Drawing.Size(156, 23);
             this.stylesComboBox.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(94, 9);
+            this.label1.Location = new System.Drawing.Point(219, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 15);
             this.label1.TabIndex = 6;
@@ -129,35 +130,27 @@ namespace Librarian.WinForms
             // 
             // createStyle
             // 
-            this.createStyle.Location = new System.Drawing.Point(221, 24);
+            this.createStyle.Location = new System.Drawing.Point(380, 11);
             this.createStyle.Name = "createStyle";
-            this.createStyle.Size = new System.Drawing.Size(118, 23);
+            this.createStyle.Size = new System.Drawing.Size(119, 48);
             this.createStyle.TabIndex = 7;
             this.createStyle.Text = "Создать стиль";
             this.createStyle.UseVisualStyleBackColor = true;
             this.createStyle.Click += new System.EventHandler(this.createStyle_Click);
             // 
-            // button5
+            // ExportToTxt
             // 
-            this.button5.Location = new System.Drawing.Point(345, 24);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(118, 23);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Поиск";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(1059, 567);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(117, 23);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Выгрузить в .txt";
-            this.button6.UseVisualStyleBackColor = true;
+            this.ExportToTxt.Location = new System.Drawing.Point(996, 567);
+            this.ExportToTxt.Name = "ExportToTxt";
+            this.ExportToTxt.Size = new System.Drawing.Size(117, 23);
+            this.ExportToTxt.TabIndex = 10;
+            this.ExportToTxt.Text = "Выгрузить в .txt";
+            this.ExportToTxt.UseVisualStyleBackColor = true;
+            this.ExportToTxt.Click += new System.EventHandler(this.ExportToTxt_Click);
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(1059, 596);
+            this.button7.Location = new System.Drawing.Point(996, 596);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(117, 23);
             this.button7.TabIndex = 11;
@@ -166,7 +159,7 @@ namespace Librarian.WinForms
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(1059, 625);
+            this.button8.Location = new System.Drawing.Point(996, 625);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(117, 23);
             this.button8.TabIndex = 12;
@@ -203,25 +196,47 @@ namespace Librarian.WinForms
             this.columnHeader3.Text = "Тип";
             this.columnHeader3.Width = 100;
             // 
+            // editStyle
+            // 
+            this.editStyle.Location = new System.Drawing.Point(504, 11);
+            this.editStyle.Name = "editStyle";
+            this.editStyle.Size = new System.Drawing.Size(119, 48);
+            this.editStyle.TabIndex = 14;
+            this.editStyle.Text = "Редактировать стиль";
+            this.editStyle.UseVisualStyleBackColor = true;
+            this.editStyle.Click += new System.EventHandler(this.editStyle_Click);
+            // 
+            // EditSource
+            // 
+            this.EditSource.Location = new System.Drawing.Point(94, 9);
+            this.EditSource.Name = "EditSource";
+            this.EditSource.Size = new System.Drawing.Size(95, 53);
+            this.EditSource.TabIndex = 15;
+            this.EditSource.Text = "Редактировать источник";
+            this.EditSource.UseVisualStyleBackColor = true;
+            this.EditSource.Click += new System.EventHandler(this.EditSource_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1188, 660);
+            this.ClientSize = new System.Drawing.Size(1125, 660);
+            this.Controls.Add(this.EditSource);
+            this.Controls.Add(this.editStyle);
             this.Controls.Add(this.selectedLitSourcesListView);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.ExportToTxt);
             this.Controls.Add(this.createStyle);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.stylesComboBox);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.litSourcesListView);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.addSourceBtn);
             this.Name = "Form1";
             this.Text = "BiblioReferences";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,15 +244,14 @@ namespace Librarian.WinForms
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addSourceBtn;
         private System.Windows.Forms.ListView litSourcesListView;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox stylesComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button createStyle;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button ExportToTxt;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ColumnHeader Title;
@@ -247,6 +261,8 @@ namespace Librarian.WinForms
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private Button editStyle;
+        private Button EditSource;
     }
 }
 

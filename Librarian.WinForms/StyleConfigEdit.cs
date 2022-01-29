@@ -40,6 +40,8 @@ namespace Librarian.WinForms
             PageNumberPostfixTB.Text = _config.PageNumberPostfix;
             PageCountPrefixTB.Text = _config.PageCountPrefix;
             PageCountPostfixTB.Text = _config.PageCountPostfix;
+            CityPrefixTb.Text = _config.CityPrefix;
+            CityPostfixTb.Text = _config.CityPostfix;
         }
 
         private void saveConfig_Click(object sender, EventArgs e)
@@ -65,8 +67,11 @@ namespace Librarian.WinForms
             _config.PageNumberPostfix = PageNumberPostfixTB.Text;
             _config.PageCountPrefix = PageCountPrefixTB.Text;
             _config.PageCountPostfix = PageCountPostfixTB.Text;
+            _config.CityPrefix = CityPrefixTb.Text;
+            _config.CityPostfix = CityPostfixTb.Text;
 
             this.Close();
         }
+
     }
 }

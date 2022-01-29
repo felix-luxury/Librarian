@@ -72,6 +72,10 @@ namespace Librarian.WinForms
             this.PageCountPrefixTB = new System.Windows.Forms.TextBox();
             this.PageNumberPrefixlabel = new System.Windows.Forms.Label();
             this.saveConfig = new System.Windows.Forms.Button();
+            this.CityPrefixTb = new System.Windows.Forms.TextBox();
+            this.CityPostfixTb = new System.Windows.Forms.TextBox();
+            this.CityPostfixlabel = new System.Windows.Forms.Label();
+            this.CityPrefixlabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // authorsPrefixLabel
@@ -92,7 +96,7 @@ namespace Librarian.WinForms
             // 
             // authorsPostfixTextBox
             // 
-            this.authorsPostfixTextBox.Location = new System.Drawing.Point(150, 30);
+            this.authorsPostfixTextBox.Location = new System.Drawing.Point(155, 30);
             this.authorsPostfixTextBox.Name = "authorsPostfixTextBox";
             this.authorsPostfixTextBox.Size = new System.Drawing.Size(100, 23);
             this.authorsPostfixTextBox.TabIndex = 3;
@@ -124,7 +128,7 @@ namespace Librarian.WinForms
             // 
             // authorsLastDelimiterTextBox
             // 
-            this.authorsLastDelimiterTextBox.Location = new System.Drawing.Point(150, 74);
+            this.authorsLastDelimiterTextBox.Location = new System.Drawing.Point(155, 74);
             this.authorsLastDelimiterTextBox.Name = "authorsLastDelimiterTextBox";
             this.authorsLastDelimiterTextBox.Size = new System.Drawing.Size(100, 23);
             this.authorsLastDelimiterTextBox.TabIndex = 7;
@@ -156,7 +160,7 @@ namespace Librarian.WinForms
             // 
             // yearPostfixTextBox
             // 
-            this.yearPostfixTextBox.Location = new System.Drawing.Point(150, 130);
+            this.yearPostfixTextBox.Location = new System.Drawing.Point(155, 130);
             this.yearPostfixTextBox.Name = "yearPostfixTextBox";
             this.yearPostfixTextBox.Size = new System.Drawing.Size(100, 23);
             this.yearPostfixTextBox.TabIndex = 11;
@@ -172,7 +176,7 @@ namespace Librarian.WinForms
             // 
             // titlePostfixTextBox
             // 
-            this.titlePostfixTextBox.Location = new System.Drawing.Point(150, 196);
+            this.titlePostfixTextBox.Location = new System.Drawing.Point(155, 196);
             this.titlePostfixTextBox.Name = "titlePostfixTextBox";
             this.titlePostfixTextBox.Size = new System.Drawing.Size(100, 23);
             this.titlePostfixTextBox.TabIndex = 15;
@@ -204,7 +208,7 @@ namespace Librarian.WinForms
             // 
             // journalPostfixTextBox
             // 
-            this.journalPostfixTextBox.Location = new System.Drawing.Point(150, 262);
+            this.journalPostfixTextBox.Location = new System.Drawing.Point(155, 262);
             this.journalPostfixTextBox.Name = "journalPostfixTextBox";
             this.journalPostfixTextBox.Size = new System.Drawing.Size(100, 23);
             this.journalPostfixTextBox.TabIndex = 19;
@@ -236,7 +240,7 @@ namespace Librarian.WinForms
             // 
             // datePostfixTextBox
             // 
-            this.datePostfixTextBox.Location = new System.Drawing.Point(150, 314);
+            this.datePostfixTextBox.Location = new System.Drawing.Point(155, 314);
             this.datePostfixTextBox.Name = "datePostfixTextBox";
             this.datePostfixTextBox.Size = new System.Drawing.Size(100, 23);
             this.datePostfixTextBox.TabIndex = 23;
@@ -268,7 +272,7 @@ namespace Librarian.WinForms
             // 
             // dateFormatTextBox
             // 
-            this.dateFormatTextBox.Location = new System.Drawing.Point(293, 314);
+            this.dateFormatTextBox.Location = new System.Drawing.Point(12, 363);
             this.dateFormatTextBox.Name = "dateFormatTextBox";
             this.dateFormatTextBox.Size = new System.Drawing.Size(100, 23);
             this.dateFormatTextBox.TabIndex = 25;
@@ -276,15 +280,15 @@ namespace Librarian.WinForms
             // dateFormatLabel
             // 
             this.dateFormatLabel.AutoSize = true;
-            this.dateFormatLabel.Location = new System.Drawing.Point(306, 296);
+            this.dateFormatLabel.Location = new System.Drawing.Point(16, 345);
             this.dateFormatLabel.Name = "dateFormatLabel";
-            this.dateFormatLabel.Size = new System.Drawing.Size(79, 15);
+            this.dateFormatLabel.Size = new System.Drawing.Size(96, 15);
             this.dateFormatLabel.TabIndex = 24;
-            this.dateFormatLabel.Text = "Формат даты";
+            this.dateFormatLabel.Text = "Формат доступа";
             // 
             // sourcePostfixTextBox
             // 
-            this.sourcePostfixTextBox.Location = new System.Drawing.Point(150, 366);
+            this.sourcePostfixTextBox.Location = new System.Drawing.Point(297, 363);
             this.sourcePostfixTextBox.Name = "sourcePostfixTextBox";
             this.sourcePostfixTextBox.Size = new System.Drawing.Size(100, 23);
             this.sourcePostfixTextBox.TabIndex = 29;
@@ -292,15 +296,15 @@ namespace Librarian.WinForms
             // sourcePostfixLabel
             // 
             this.sourcePostfixLabel.AutoSize = true;
-            this.sourcePostfixLabel.Location = new System.Drawing.Point(137, 348);
+            this.sourcePostfixLabel.Location = new System.Drawing.Point(283, 345);
             this.sourcePostfixLabel.Name = "sourcePostfixLabel";
-            this.sourcePostfixLabel.Size = new System.Drawing.Size(123, 15);
+            this.sourcePostfixLabel.Size = new System.Drawing.Size(135, 15);
             this.sourcePostfixLabel.TabIndex = 28;
-            this.sourcePostfixLabel.Text = "Постфикс источника";
+            this.sourcePostfixLabel.Text = "Постфикс Web-ссылки";
             // 
             // sourcePrefixTextBox
             // 
-            this.sourcePrefixTextBox.Location = new System.Drawing.Point(12, 366);
+            this.sourcePrefixTextBox.Location = new System.Drawing.Point(155, 363);
             this.sourcePrefixTextBox.Name = "sourcePrefixTextBox";
             this.sourcePrefixTextBox.Size = new System.Drawing.Size(100, 23);
             this.sourcePrefixTextBox.TabIndex = 27;
@@ -308,11 +312,11 @@ namespace Librarian.WinForms
             // sourcePrefixLabel
             // 
             this.sourcePrefixLabel.AutoSize = true;
-            this.sourcePrefixLabel.Location = new System.Drawing.Point(5, 348);
+            this.sourcePrefixLabel.Location = new System.Drawing.Point(144, 345);
             this.sourcePrefixLabel.Name = "sourcePrefixLabel";
-            this.sourcePrefixLabel.Size = new System.Drawing.Size(118, 15);
+            this.sourcePrefixLabel.Size = new System.Drawing.Size(130, 15);
             this.sourcePrefixLabel.TabIndex = 26;
-            this.sourcePrefixLabel.Text = "Префикс источника";
+            this.sourcePrefixLabel.Text = "Префикс Web-ссылки";
             // 
             // EditionNumberPostfixTB
             // 
@@ -412,7 +416,7 @@ namespace Librarian.WinForms
             // 
             // saveConfig
             // 
-            this.saveConfig.Location = new System.Drawing.Point(496, 378);
+            this.saveConfig.Location = new System.Drawing.Point(531, 395);
             this.saveConfig.Name = "saveConfig";
             this.saveConfig.Size = new System.Drawing.Size(75, 23);
             this.saveConfig.TabIndex = 42;
@@ -420,11 +424,47 @@ namespace Librarian.WinForms
             this.saveConfig.UseVisualStyleBackColor = true;
             this.saveConfig.Click += new System.EventHandler(this.saveConfig_Click);
             // 
+            // CityPrefixTb
+            // 
+            this.CityPrefixTb.Location = new System.Drawing.Point(319, 196);
+            this.CityPrefixTb.Name = "CityPrefixTb";
+            this.CityPrefixTb.Size = new System.Drawing.Size(100, 23);
+            this.CityPrefixTb.TabIndex = 43;
+            // 
+            // CityPostfixTb
+            // 
+            this.CityPostfixTb.Location = new System.Drawing.Point(485, 196);
+            this.CityPostfixTb.Name = "CityPostfixTb";
+            this.CityPostfixTb.Size = new System.Drawing.Size(100, 23);
+            this.CityPostfixTb.TabIndex = 44;
+            // 
+            // CityPostfixlabel
+            // 
+            this.CityPostfixlabel.AutoSize = true;
+            this.CityPostfixlabel.Location = new System.Drawing.Point(319, 178);
+            this.CityPostfixlabel.Name = "CityPostfixlabel";
+            this.CityPostfixlabel.Size = new System.Drawing.Size(98, 15);
+            this.CityPostfixlabel.TabIndex = 45;
+            this.CityPostfixlabel.Text = "Префикс города";
+            // 
+            // CityPrefixlabel
+            // 
+            this.CityPrefixlabel.AutoSize = true;
+            this.CityPrefixlabel.Location = new System.Drawing.Point(485, 178);
+            this.CityPrefixlabel.Name = "CityPrefixlabel";
+            this.CityPrefixlabel.Size = new System.Drawing.Size(103, 15);
+            this.CityPrefixlabel.TabIndex = 46;
+            this.CityPrefixlabel.Text = "Постфикс города";
+            // 
             // StyleConfigEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 430);
+            this.Controls.Add(this.CityPrefixlabel);
+            this.Controls.Add(this.CityPostfixlabel);
+            this.Controls.Add(this.CityPostfixTb);
+            this.Controls.Add(this.CityPrefixTb);
             this.Controls.Add(this.saveConfig);
             this.Controls.Add(this.PageCountPostfixTB);
             this.Controls.Add(this.PageNumberPostfixlabel);
@@ -520,5 +560,9 @@ namespace Librarian.WinForms
         private System.Windows.Forms.TextBox PageCountPrefixTB;
         private System.Windows.Forms.Label PageNumberPrefixlabel;
         private System.Windows.Forms.Button saveConfig;
+        private System.Windows.Forms.TextBox CityPrefixTb;
+        private System.Windows.Forms.TextBox CityPostfixTb;
+        private System.Windows.Forms.Label CityPostfixlabel;
+        private System.Windows.Forms.Label CityPrefixlabel;
     }
 }

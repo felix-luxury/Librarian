@@ -114,7 +114,7 @@ namespace Librarian.WinForms
             // stylesComboBox
             // 
             this.stylesComboBox.FormattingEnabled = true;
-            this.stylesComboBox.Location = new System.Drawing.Point(219, 25);
+            this.stylesComboBox.Location = new System.Drawing.Point(207, 25);
             this.stylesComboBox.Name = "stylesComboBox";
             this.stylesComboBox.Size = new System.Drawing.Size(156, 23);
             this.stylesComboBox.TabIndex = 5;
@@ -122,7 +122,7 @@ namespace Librarian.WinForms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(219, 9);
+            this.label1.Location = new System.Drawing.Point(207, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 15);
             this.label1.TabIndex = 6;

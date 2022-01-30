@@ -42,7 +42,7 @@ namespace Librarian.WinForms
             this.label1 = new System.Windows.Forms.Label();
             this.createStyle = new System.Windows.Forms.Button();
             this.ExportToTxt = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.exportToDoc = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.selectedLitSourcesListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
@@ -99,8 +99,9 @@ namespace Librarian.WinForms
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
-            this.button2.Text = "Поднять";
+            this.button2.Text = "↑";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -108,8 +109,9 @@ namespace Librarian.WinForms
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 4;
-            this.button3.Text = "Опустить";
+            this.button3.Text = "↓";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // stylesComboBox
             // 
@@ -148,14 +150,15 @@ namespace Librarian.WinForms
             this.ExportToTxt.UseVisualStyleBackColor = true;
             this.ExportToTxt.Click += new System.EventHandler(this.ExportToTxt_Click);
             // 
-            // button7
+            // exportToDoc
             // 
-            this.button7.Location = new System.Drawing.Point(996, 596);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(117, 23);
-            this.button7.TabIndex = 11;
-            this.button7.Text = "Выгрузить в .doc";
-            this.button7.UseVisualStyleBackColor = true;
+            this.exportToDoc.Location = new System.Drawing.Point(996, 596);
+            this.exportToDoc.Name = "exportToDoc";
+            this.exportToDoc.Size = new System.Drawing.Size(117, 23);
+            this.exportToDoc.TabIndex = 11;
+            this.exportToDoc.Text = "Выгрузить в .doc";
+            this.exportToDoc.UseVisualStyleBackColor = true;
+            this.exportToDoc.Click += new System.EventHandler(this.exportToDoc_Click);
             // 
             // button8
             // 
@@ -165,6 +168,7 @@ namespace Librarian.WinForms
             this.button8.TabIndex = 12;
             this.button8.Text = "Добавить в .doc";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // selectedLitSourcesListView
             // 
@@ -225,7 +229,7 @@ namespace Librarian.WinForms
             this.Controls.Add(this.editStyle);
             this.Controls.Add(this.selectedLitSourcesListView);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.exportToDoc);
             this.Controls.Add(this.ExportToTxt);
             this.Controls.Add(this.createStyle);
             this.Controls.Add(this.label1);
@@ -252,7 +256,7 @@ namespace Librarian.WinForms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button createStyle;
         private System.Windows.Forms.Button ExportToTxt;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button exportToDoc;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ColumnHeader Title;
         private System.Windows.Forms.ColumnHeader Authors;

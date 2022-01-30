@@ -1,4 +1,4 @@
-﻿namespace Librarian.Core.Styles
+﻿namespace Librarian.Core.References
 
 {
     public enum FieldType

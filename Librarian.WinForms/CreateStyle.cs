@@ -1,4 +1,5 @@
 ﻿using Librarian.Core.MongoDb;
+using Librarian.Core.References;
 using Librarian.Core.Styles;
 using System;
 using System.Collections.Generic;
@@ -100,6 +101,16 @@ namespace Librarian.WinForms
             {
                 fieldsLB.Items.Remove(fieldsLB.SelectedItems[0]);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Program.MoveListBoxItems(fieldsLB, MoveDirection.Up);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Program.MoveListBoxItems(fieldsLB, MoveDirection.Down);
         }
     }
 }

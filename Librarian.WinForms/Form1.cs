@@ -2,6 +2,7 @@
 using Librarian.Core.MongoDb;
 using Librarian.Core.References;
 using Librarian.Core.Styles;
+using NPOI.XWPF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -209,6 +210,138 @@ namespace Librarian.WinForms
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Program.MoveListViewItems(selectedLitSourcesListView, MoveDirection.Up);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Program.MoveListViewItems(selectedLitSourcesListView, MoveDirection.Down);
+        }
+
+        private void exportToDoc_Click(object sender, EventArgs e)
+        {
+            if (stylesComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Сначала выберите стиль");
+                return;
+            }
+            if (selectedLitSourcesListView.Items.Count == 0)
+            {
+                MessageBox.Show("Сначала выберите лит. источники");
+                return;
+            }
+
+            string styleName = stylesComboBox.SelectedItem.ToString();
+            Style style = _styles.Where(x => x.Name == styleName).First();
+            List<string> litSourceTitle = new List<string>();
+            List<LiterarySource> sources = new List<LiterarySource>();
+            foreach (var item in selectedLitSourcesListView.Items)
+            {
+                var lvItem = item as ListViewItem;
+                litSourceTitle.Add(lvItem.Text);
+            }
+            foreach (var title in litSourceTitle)
+            {
+                sources.Add(_literarySources.Where(x => x.Title == title).First());
+            }
+
+            StringBuilder sb = new StringBuilder();
+
+            XWPFDocument doc = new XWPFDocument();
+            var numId = 1.ToString();
+            XWPFParagraph par1 = doc.CreateParagraph();
+            par1.Alignment = ParagraphAlignment.CENTER;
+            XWPFRun run1 = par1.CreateRun();
+            run1.FontFamily = "Times New Roman";
+            run1.FontSize = 16;
+            run1.IsBold = true;
+            run1.SetText("Список литературы");
+            foreach (var source in sources)
+            {
+                var builder = new ReferenceBuilder(source, style);
+                XWPFParagraph par = doc.CreateParagraph();
+                par.SetNumID(numId);
+                XWPFRun run = par.CreateRun();
+                run.FontFamily = "Times New Roman";
+                run.FontSize = 14;
+                run.SetText(builder.Build());
+            }
+
+
+            FileStream fs = new FileStream($"Литературные источники {DateTime.Now.ToString("dd.MM.yy HH-mm-ss")}.docx", FileMode.Create);
+            doc.Write(fs);
+            fs.Close();
+            MessageBox.Show("Экспорт завершён");
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (stylesComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Сначала выберите стиль");
+                return;
+            }
+            if (selectedLitSourcesListView.Items.Count == 0)
+            {
+                MessageBox.Show("Сначала выберите лит. источники");
+                return;
+            }
+
+            string styleName = stylesComboBox.SelectedItem.ToString();
+            Style style = _styles.Where(x => x.Name == styleName).First();
+            List<string> litSourceTitle = new List<string>();
+            List<LiterarySource> sources = new List<LiterarySource>();
+            foreach (var item in selectedLitSourcesListView.Items)
+            {
+                var lvItem = item as ListViewItem;
+                litSourceTitle.Add(lvItem.Text);
+            }
+            foreach (var title in litSourceTitle)
+            {
+                sources.Add(_literarySources.Where(x => x.Title == title).First());
+            }
+
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Word files (.docx ,.doc)|*.docx;*.doc";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                var template = dialog.FileName;
+                using (var rs = File.OpenRead(template))
+                {
+                    var generateFile = $"Литературные источники {DateTime.Now.ToString("dd.MM.yy HH-mm-ss")}.docx";
+                    using (var ws = File.Create(generateFile))
+                    {
+                        var doc = new XWPFDocument(rs);
+                        var numId = 1.ToString();
+                        XWPFParagraph par1 = doc.CreateParagraph();
+                        par1.Alignment = ParagraphAlignment.CENTER;
+                        XWPFRun run1 = par1.CreateRun();
+                        run1.FontFamily = "Times New Roman";
+                        run1.FontSize = 16;
+                        run1.IsBold = true;
+                        run1.SetText("Список литературы");
+                        foreach (var source in sources)
+                        {
+                            var builder = new ReferenceBuilder(source, style);
+                            XWPFParagraph par = doc.CreateParagraph();
+                            par.SetNumID(numId);
+                            XWPFRun run = par.CreateRun();
+                            run.FontFamily = "Times New Roman";
+                            run.FontSize = 14;
+                            run.SetText(builder.Build());
+                        }
+                        doc.Write(ws);
+                        MessageBox.Show("Экспорт завершён");
+                    }
+                }
+            }
+
+            
         }
     }
 }

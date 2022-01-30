@@ -40,23 +40,23 @@ namespace Librarian.WinForms
             this.titleTB = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.journalTitleTB = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.journalTitleL = new System.Windows.Forms.Label();
             this.readDateDP = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
+            this.readDateL = new System.Windows.Forms.Label();
             this.urlTB = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.urlL = new System.Windows.Forms.Label();
             this.editionNumberTB = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.editionNumberL = new System.Windows.Forms.Label();
             this.pageNumberTB = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.pageNumberL = new System.Windows.Forms.Label();
             this.pageCountTB = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.pageCountL = new System.Windows.Forms.Label();
             this.cityTB = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.cityL = new System.Windows.Forms.Label();
             this.publisherTB = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.publisherL = new System.Windows.Forms.Label();
             this.publishYearTB = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.yearL = new System.Windows.Forms.Label();
             this.saveBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -122,6 +122,7 @@ namespace Librarian.WinForms
             this.authorDownBtn.TabIndex = 7;
             this.authorDownBtn.Text = "↓";
             this.authorDownBtn.UseVisualStyleBackColor = true;
+            this.authorDownBtn.Click += new System.EventHandler(this.authorDownBtn_Click);
             // 
             // authorUpBtn
             // 
@@ -156,14 +157,14 @@ namespace Librarian.WinForms
             this.journalTitleTB.Size = new System.Drawing.Size(121, 23);
             this.journalTitleTB.TabIndex = 11;
             // 
-            // label4
+            // journalTitleL
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(459, 57);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 15);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Название журнала";
+            this.journalTitleL.AutoSize = true;
+            this.journalTitleL.Location = new System.Drawing.Point(459, 57);
+            this.journalTitleL.Name = "journalTitleL";
+            this.journalTitleL.Size = new System.Drawing.Size(110, 15);
+            this.journalTitleL.TabIndex = 10;
+            this.journalTitleL.Text = "Название журнала";
             // 
             // readDateDP
             // 
@@ -172,14 +173,14 @@ namespace Librarian.WinForms
             this.readDateDP.Size = new System.Drawing.Size(200, 23);
             this.readDateDP.TabIndex = 12;
             // 
-            // label5
+            // readDateL
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(321, 194);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 15);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Дата чтения";
+            this.readDateL.AutoSize = true;
+            this.readDateL.Location = new System.Drawing.Point(321, 194);
+            this.readDateL.Name = "readDateL";
+            this.readDateL.Size = new System.Drawing.Size(73, 15);
+            this.readDateL.TabIndex = 13;
+            this.readDateL.Text = "Дата чтения";
             // 
             // urlTB
             // 
@@ -188,14 +189,14 @@ namespace Librarian.WinForms
             this.urlTB.Size = new System.Drawing.Size(121, 23);
             this.urlTB.TabIndex = 15;
             // 
-            // label6
+            // urlL
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(185, 194);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 15);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "URL адрес";
+            this.urlL.AutoSize = true;
+            this.urlL.Location = new System.Drawing.Point(185, 194);
+            this.urlL.Name = "urlL";
+            this.urlL.Size = new System.Drawing.Size(62, 15);
+            this.urlL.TabIndex = 14;
+            this.urlL.Text = "URL адрес";
             // 
             // editionNumberTB
             // 
@@ -204,14 +205,14 @@ namespace Librarian.WinForms
             this.editionNumberTB.Size = new System.Drawing.Size(121, 23);
             this.editionNumberTB.TabIndex = 17;
             // 
-            // label7
+            // editinNumberL
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(185, 57);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 15);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Номер издания";
+            this.editionNumberL.AutoSize = true;
+            this.editionNumberL.Location = new System.Drawing.Point(185, 57);
+            this.editionNumberL.Name = "editinNumberL";
+            this.editionNumberL.Size = new System.Drawing.Size(92, 15);
+            this.editionNumberL.TabIndex = 16;
+            this.editionNumberL.Text = "Номер издания";
             // 
             // pageNumberTB
             // 
@@ -220,14 +221,14 @@ namespace Librarian.WinForms
             this.pageNumberTB.Size = new System.Drawing.Size(121, 23);
             this.pageNumberTB.TabIndex = 19;
             // 
-            // label8
+            // pageNuberL
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(185, 149);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(102, 15);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Номер страницы";
+            this.pageNumberL.AutoSize = true;
+            this.pageNumberL.Location = new System.Drawing.Point(185, 149);
+            this.pageNumberL.Name = "pageNuberL";
+            this.pageNumberL.Size = new System.Drawing.Size(102, 15);
+            this.pageNumberL.TabIndex = 18;
+            this.pageNumberL.Text = "Номер страницы";
             // 
             // pageCountTB
             // 
@@ -236,14 +237,14 @@ namespace Librarian.WinForms
             this.pageCountTB.Size = new System.Drawing.Size(121, 23);
             this.pageCountTB.TabIndex = 21;
             // 
-            // label9
+            // pageCountL
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(321, 57);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(120, 15);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Количество страниц";
+            this.pageCountL.AutoSize = true;
+            this.pageCountL.Location = new System.Drawing.Point(321, 57);
+            this.pageCountL.Name = "pageCountL";
+            this.pageCountL.Size = new System.Drawing.Size(120, 15);
+            this.pageCountL.TabIndex = 20;
+            this.pageCountL.Text = "Количество страниц";
             // 
             // cityTB
             // 
@@ -252,14 +253,14 @@ namespace Librarian.WinForms
             this.cityTB.Size = new System.Drawing.Size(121, 23);
             this.cityTB.TabIndex = 23;
             // 
-            // label10
+            // cityL
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(185, 101);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 15);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Город";
+            this.cityL.AutoSize = true;
+            this.cityL.Location = new System.Drawing.Point(185, 101);
+            this.cityL.Name = "cityL";
+            this.cityL.Size = new System.Drawing.Size(40, 15);
+            this.cityL.TabIndex = 22;
+            this.cityL.Text = "Город";
             // 
             // publisherTB
             // 
@@ -268,14 +269,14 @@ namespace Librarian.WinForms
             this.publisherTB.Size = new System.Drawing.Size(121, 23);
             this.publisherTB.TabIndex = 25;
             // 
-            // label11
+            // publisherL
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(321, 101);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(57, 15);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "Издатель";
+            this.publisherL.AutoSize = true;
+            this.publisherL.Location = new System.Drawing.Point(321, 101);
+            this.publisherL.Name = "publisherL";
+            this.publisherL.Size = new System.Drawing.Size(57, 15);
+            this.publisherL.TabIndex = 24;
+            this.publisherL.Text = "Издатель";
             // 
             // publishYearTB
             // 
@@ -284,14 +285,14 @@ namespace Librarian.WinForms
             this.publishYearTB.Size = new System.Drawing.Size(121, 23);
             this.publishYearTB.TabIndex = 27;
             // 
-            // label12
+            // yearL
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(459, 101);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(73, 15);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "Год издания";
+            this.yearL.AutoSize = true;
+            this.yearL.Location = new System.Drawing.Point(459, 101);
+            this.yearL.Name = "yearL";
+            this.yearL.Size = new System.Drawing.Size(73, 15);
+            this.yearL.TabIndex = 26;
+            this.yearL.Text = "Год издания";
             // 
             // saveBtn
             // 
@@ -310,23 +311,23 @@ namespace Librarian.WinForms
             this.ClientSize = new System.Drawing.Size(594, 345);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.publishYearTB);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.yearL);
             this.Controls.Add(this.publisherTB);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.publisherL);
             this.Controls.Add(this.cityTB);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.cityL);
             this.Controls.Add(this.pageCountTB);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.pageCountL);
             this.Controls.Add(this.pageNumberTB);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.pageNumberL);
             this.Controls.Add(this.editionNumberTB);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.editionNumberL);
             this.Controls.Add(this.urlTB);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.urlL);
+            this.Controls.Add(this.readDateL);
             this.Controls.Add(this.readDateDP);
             this.Controls.Add(this.journalTitleTB);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.journalTitleL);
             this.Controls.Add(this.titleTB);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.authorDownBtn);
@@ -357,23 +358,23 @@ namespace Librarian.WinForms
         private System.Windows.Forms.TextBox titleTB;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox journalTitleTB;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label journalTitleL;
         private System.Windows.Forms.DateTimePicker readDateDP;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label readDateL;
         private System.Windows.Forms.TextBox urlTB;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label urlL;
         private System.Windows.Forms.TextBox editionNumberTB;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label editionNumberL;
         private System.Windows.Forms.TextBox pageNumberTB;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label pageNumberL;
         private System.Windows.Forms.TextBox pageCountTB;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label pageCountL;
         private System.Windows.Forms.TextBox cityTB;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label cityL;
         private System.Windows.Forms.TextBox publisherTB;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label publisherL;
         private System.Windows.Forms.TextBox publishYearTB;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label yearL;
         private System.Windows.Forms.Button saveBtn;
     }
 }

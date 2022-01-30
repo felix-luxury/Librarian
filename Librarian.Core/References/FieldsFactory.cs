@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Librarian.Core.References
 {
-    public class FieldsBuilder
+    public class FieldsFactory
     {
         public static AuthorsField CreateAuthorsField(LiterarySource literarySource,StyleConfig config)
         {

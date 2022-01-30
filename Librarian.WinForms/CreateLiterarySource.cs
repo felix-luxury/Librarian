@@ -61,30 +61,57 @@ namespace Librarian.WinForms
                 case LiterarySourceType.Default:
                     break;
                 case LiterarySourceType.Book:
+                    editionNumberL.Visible = true;
                     editionNumberTB.Visible = true;
+                    pageCountL.Visible = true;
                     pageCountTB.Visible = true;
+                    pageNumberL.Visible = true;
+                    pageNumberTB.Visible = true;
+                    cityL.Visible = true;
                     cityTB.Visible = true;
+                    publisherL.Visible = true;
                     publisherTB.Visible = true;
+                    yearL.Visible = true;
                     publishYearTB.Visible = true;
+                    journalTitleL.Visible = true;
                     journalTitleTB.Visible = true;
                     break;
                 case LiterarySourceType.JournalArticle:
+                    editionNumberL.Visible = true;
                     editionNumberTB.Visible = true;
+                    pageCountL.Visible = true;
                     pageCountTB.Visible = true;
+                    pageNumberL.Visible = true;
+                    pageNumberTB.Visible = true;
+                    cityL.Visible = true;
                     cityTB.Visible = true;
+                    publisherL.Visible = true;
                     publisherTB.Visible = true;
+                    yearL.Visible = true;
                     publishYearTB.Visible = true;
+                    journalTitleL.Visible = true;
                     journalTitleTB.Visible = true;
                     break;
                 case LiterarySourceType.ScienceArticle:
+                    pageCountL.Visible = true;
                     pageCountTB.Visible = true;
+                    cityL.Visible = true;
                     cityTB.Visible = true;
+                    publisherL.Visible = true;
                     publisherTB.Visible = true;
+                    yearL.Visible = true;
                     publishYearTB.Visible = true;
                     break;
                 case LiterarySourceType.WebArtice:
+                    cityL.Visible = true;
+                    cityTB.Visible = true;
+                    publisherL.Visible = true;
+                    publisherTB.Visible = true;
+                    yearL.Visible = true;
                     publishYearTB.Visible = true;
+                    urlL.Visible = true;
                     urlTB.Visible = true;
+                    readDateL.Visible = true;
                     readDateDP.Visible = true;
                     break;
                 default:
@@ -102,13 +129,22 @@ namespace Librarian.WinForms
             pageNumberTB.Visible = false;
             journalTitleTB.Visible = false;
             readDateDP.Visible = false;
+
+            editionNumberL.Visible = false;
+            pageCountL.Visible = false;
+            cityL.Visible = false;
+            publisherL.Visible = false;
+            yearL.Visible = false;
+            urlL.Visible = false;
+            pageNumberL.Visible = false;
+            journalTitleL.Visible = false;
+            readDateL.Visible = false;
         }
 
         private void authorUpBtn_Click(object sender, EventArgs e)
         {
-            if (authorsListBox.SelectedItems.Count > 0)
-            {
-            }
+
+            Program.MoveListBoxItems(authorsListBox, MoveDirection.Up);
         }
         private string[] GetAuthors()
         {
@@ -182,6 +218,11 @@ namespace Librarian.WinForms
             _mongo.InsertLitSource(source);
             MessageBox.Show("Источник добавлен");
 
+        }
+
+        private void authorDownBtn_Click(object sender, EventArgs e)
+        {
+            Program.MoveListBoxItems(authorsListBox, MoveDirection.Down);
         }
     }
 }

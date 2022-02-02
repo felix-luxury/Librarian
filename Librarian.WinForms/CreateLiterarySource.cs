@@ -10,7 +10,7 @@ namespace Librarian.WinForms
     {
         private MongoConnection _mongo;
         private LiterarySource _source;
-        private bool _isEdit;
+        private bool _isEdit = false;
 
         public CreateLiterarySource(MongoConnection mongoConnection)
         {
@@ -25,7 +25,9 @@ namespace Librarian.WinForms
 
         public CreateLiterarySource(MongoConnection mongoConnection, LiterarySource source) : this(mongoConnection)
         {
+            deleteBtn.Visible = true;
             _source = source;
+            _isEdit = true;
             sourceTypeComboBox.SelectedItem = source.LiterarySourceType;
             foreach (var author in source.Authors)
             {
@@ -157,10 +159,25 @@ namespace Librarian.WinForms
         }
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            LiterarySourceType selectedType = (LiterarySourceType)(sourceTypeComboBox.SelectedItem ?? LiterarySourceType.Default);
+            if (_isEdit)
+            {
+                UpdateSource(_source);
+                _mongo.UpsertLiterarySources(_source.Id, _source);
+                MessageBox.Show("Источник обновлён");
+            }
+            else
+            {
+                LiterarySource source = new LiterarySource();
+                UpdateSource(source);
+                _mongo.InsertLitSource(source);
+                MessageBox.Show("Источник добавлен");
+            }
+        }
 
-            LiterarySource source = new LiterarySource();
-            PublishInfo publishInfo = new PublishInfo(); 
+        private void UpdateSource(LiterarySource source)
+        {
+            LiterarySourceType selectedType = (LiterarySourceType)(sourceTypeComboBox.SelectedItem ?? LiterarySourceType.Default);
+            PublishInfo publishInfo = new PublishInfo();
             source.Authors = GetAuthors();
             source.Title = titleTB.Text;
             switch (selectedType)
@@ -215,14 +232,23 @@ namespace Librarian.WinForms
                 default:
                     break;
             }
-            _mongo.InsertLitSource(source);
-            MessageBox.Show("Источник добавлен");
-
         }
 
         private void authorDownBtn_Click(object sender, EventArgs e)
         {
             Program.MoveListBoxItems(authorsListBox, MoveDirection.Down);
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Вы точно хотите удалить источник?", "Удалить источник", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                _mongo.DeleteLitSource(_source.Id);
+                MessageBox.Show("Источник удалён");
+                this.Close();
+            }
+
         }
     }
 }

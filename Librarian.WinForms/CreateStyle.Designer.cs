@@ -39,13 +39,16 @@ namespace Librarian.WinForms
             this.saveStyle = new System.Windows.Forms.Button();
             this.styleNameTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.styleTypeCB = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.deleteStyleBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // fieldsLB
             // 
             this.fieldsLB.FormattingEnabled = true;
             this.fieldsLB.ItemHeight = 15;
-            this.fieldsLB.Location = new System.Drawing.Point(13, 88);
+            this.fieldsLB.Location = new System.Drawing.Point(13, 130);
             this.fieldsLB.Name = "fieldsLB";
             this.fieldsLB.Size = new System.Drawing.Size(120, 154);
             this.fieldsLB.TabIndex = 0;
@@ -53,7 +56,7 @@ namespace Librarian.WinForms
             // 
             // addFieldBtn
             // 
-            this.addFieldBtn.Location = new System.Drawing.Point(12, 41);
+            this.addFieldBtn.Location = new System.Drawing.Point(12, 86);
             this.addFieldBtn.Name = "addFieldBtn";
             this.addFieldBtn.Size = new System.Drawing.Size(121, 23);
             this.addFieldBtn.TabIndex = 1;
@@ -64,14 +67,14 @@ namespace Librarian.WinForms
             // fieldsCB
             // 
             this.fieldsCB.FormattingEnabled = true;
-            this.fieldsCB.Location = new System.Drawing.Point(12, 12);
+            this.fieldsCB.Location = new System.Drawing.Point(12, 57);
             this.fieldsCB.Name = "fieldsCB";
             this.fieldsCB.Size = new System.Drawing.Size(121, 23);
             this.fieldsCB.TabIndex = 2;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(139, 88);
+            this.button2.Location = new System.Drawing.Point(139, 130);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(30, 30);
             this.button2.TabIndex = 3;
@@ -81,7 +84,7 @@ namespace Librarian.WinForms
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(139, 140);
+            this.button3.Location = new System.Drawing.Point(139, 182);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(30, 30);
             this.button3.TabIndex = 4;
@@ -92,7 +95,7 @@ namespace Librarian.WinForms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 70);
+            this.label1.Location = new System.Drawing.Point(12, 112);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 15);
             this.label1.TabIndex = 5;
@@ -100,7 +103,7 @@ namespace Librarian.WinForms
             // 
             // configBtn
             // 
-            this.configBtn.Location = new System.Drawing.Point(139, 176);
+            this.configBtn.Location = new System.Drawing.Point(139, 218);
             this.configBtn.Name = "configBtn";
             this.configBtn.Size = new System.Drawing.Size(130, 66);
             this.configBtn.TabIndex = 6;
@@ -110,7 +113,7 @@ namespace Librarian.WinForms
             // 
             // saveStyle
             // 
-            this.saveStyle.Location = new System.Drawing.Point(13, 248);
+            this.saveStyle.Location = new System.Drawing.Point(13, 290);
             this.saveStyle.Name = "saveStyle";
             this.saveStyle.Size = new System.Drawing.Size(121, 23);
             this.saveStyle.TabIndex = 7;
@@ -120,7 +123,7 @@ namespace Librarian.WinForms
             // 
             // styleNameTB
             // 
-            this.styleNameTB.Location = new System.Drawing.Point(139, 41);
+            this.styleNameTB.Location = new System.Drawing.Point(12, 27);
             this.styleNameTB.Name = "styleNameTB";
             this.styleNameTB.Size = new System.Drawing.Size(100, 23);
             this.styleNameTB.TabIndex = 8;
@@ -128,17 +131,48 @@ namespace Librarian.WinForms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(139, 12);
+            this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 15);
             this.label2.TabIndex = 9;
             this.label2.Text = "Название стиля";
             // 
+            // styleTypeCB
+            // 
+            this.styleTypeCB.FormattingEnabled = true;
+            this.styleTypeCB.Location = new System.Drawing.Point(139, 27);
+            this.styleTypeCB.Name = "styleTypeCB";
+            this.styleTypeCB.Size = new System.Drawing.Size(121, 23);
+            this.styleTypeCB.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(139, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 15);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Тип стиля";
+            // 
+            // deleteStyleBtn
+            // 
+            this.deleteStyleBtn.Location = new System.Drawing.Point(139, 290);
+            this.deleteStyleBtn.Name = "deleteStyleBtn";
+            this.deleteStyleBtn.Size = new System.Drawing.Size(121, 23);
+            this.deleteStyleBtn.TabIndex = 12;
+            this.deleteStyleBtn.Text = "Удалить стиль";
+            this.deleteStyleBtn.UseVisualStyleBackColor = true;
+            this.deleteStyleBtn.Visible = false;
+            this.deleteStyleBtn.Click += new System.EventHandler(this.deleteStyleBtn_Click);
+            // 
             // CreateStyle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(274, 285);
+            this.ClientSize = new System.Drawing.Size(274, 327);
+            this.Controls.Add(this.deleteStyleBtn);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.styleTypeCB);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.styleNameTB);
             this.Controls.Add(this.saveStyle);
@@ -168,5 +202,8 @@ namespace Librarian.WinForms
         private System.Windows.Forms.Button saveStyle;
         private System.Windows.Forms.TextBox styleNameTB;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox styleTypeCB;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button deleteStyleBtn;
     }
 }

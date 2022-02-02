@@ -1,4 +1,5 @@
-﻿using Librarian.Core.MongoDb;
+﻿using Librarian.Core.LiterarySources;
+using Librarian.Core.MongoDb;
 using Librarian.Core.References;
 using Librarian.Core.Styles;
 using System;
@@ -18,13 +19,17 @@ namespace Librarian.WinForms
         private StyleConfig _config;
         private MongoConnection _mongo;
         private Style _style;
+        private StyleFamily _family;
         private bool _idEdit = false;
 
-        public CreateStyle(MongoConnection mongoConnection)
+        public CreateStyle(MongoConnection mongoConnection, StyleFamily family)
         {
             InitializeComponent();
             _config = new StyleConfig();
             _mongo = mongoConnection;
+            _family = family;
+
+
             fieldsCB.Items.Add(FieldType.Title);
             fieldsCB.Items.Add(FieldType.Authors);
             fieldsCB.Items.Add(FieldType.Publisher);
@@ -36,10 +41,17 @@ namespace Librarian.WinForms
             fieldsCB.Items.Add(FieldType.EditionNumber);
             fieldsCB.Items.Add(FieldType.Source);
             fieldsCB.Items.Add(FieldType.Year);
+
+            styleTypeCB.Items.Add(LiterarySourceType.Book);
+            styleTypeCB.Items.Add(LiterarySourceType.Default);
+            styleTypeCB.Items.Add(LiterarySourceType.JournalArticle);
+            styleTypeCB.Items.Add(LiterarySourceType.ScienceArticle);
+            styleTypeCB.Items.Add(LiterarySourceType.WebArtice);
         }
 
-        public CreateStyle(MongoConnection mongoConnection, Style style) : this(mongoConnection)
+        public CreateStyle(MongoConnection mongoConnection, StyleFamily family, Style style) : this(mongoConnection, family)
         {
+            deleteStyleBtn.Visible = true;
             _style = style;
             _idEdit = true;
             _config = style.Config;
@@ -77,22 +89,32 @@ namespace Librarian.WinForms
         }
         private void saveStyle_Click(object sender, EventArgs e)
         {
-            if (_idEdit)
-            {
-                _style.Config = _config;
-                _style.Name = styleNameTB.Text;
-                _style.Fields = GetFields();
-                _mongo.UpsertStyle(_style.Id, _style);
+            if (styleTypeCB.SelectedItem != null) {
+                if (_idEdit)
+                {
+                    _style.Config = _config;
+                    _style.Name = styleNameTB.Text;
+                    _style.Fields = GetFields();
+                    _family.Remove(_style.Type);
+                    _family.Add(_style.Type, _style);
+                    _mongo.UpsertStyleFamily(_family.Id, _family);
+                }
+                else
+                {
+                    FieldType[] fields = GetFields();
+                    LiterarySourceType type = (LiterarySourceType)styleTypeCB.SelectedItem;
+                    Style style = new Style(styleNameTB.Text, fields, _config, type);
+                    _family.Add(style.Type, style);
+                    _mongo.UpsertStyleFamily(_family.Id, _family);
+                }
+
+                MessageBox.Show("Стиль сохранён");
+                this.Close(); 
             }
             else
             {
-                FieldType[] fields = GetFields();
-                Style style = new Style(styleNameTB.Text, fields, _config);
-                _mongo.InsertStyle(style);
+                MessageBox.Show("Выберите тип");
             }
-
-            MessageBox.Show("Стиль сохранён");
-            this.Close();
         }
 
         private void fieldsLB_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -111,6 +133,12 @@ namespace Librarian.WinForms
         private void button3_Click(object sender, EventArgs e)
         {
             Program.MoveListBoxItems(fieldsLB, MoveDirection.Down);
+        }
+
+        private void deleteStyleBtn_Click(object sender, EventArgs e)
+        {
+            _family.Remove(_style.Type);
+            _mongo.UpsertStyleFamily(_family.Id, _family);
         }
     }
 }

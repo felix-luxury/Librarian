@@ -58,6 +58,7 @@ namespace Librarian.WinForms
             this.publishYearTB = new System.Windows.Forms.TextBox();
             this.yearL = new System.Windows.Forms.Label();
             this.saveBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // sourceTypeComboBox
@@ -205,11 +206,11 @@ namespace Librarian.WinForms
             this.editionNumberTB.Size = new System.Drawing.Size(121, 23);
             this.editionNumberTB.TabIndex = 17;
             // 
-            // editinNumberL
+            // editionNumberL
             // 
             this.editionNumberL.AutoSize = true;
             this.editionNumberL.Location = new System.Drawing.Point(185, 57);
-            this.editionNumberL.Name = "editinNumberL";
+            this.editionNumberL.Name = "editionNumberL";
             this.editionNumberL.Size = new System.Drawing.Size(92, 15);
             this.editionNumberL.TabIndex = 16;
             this.editionNumberL.Text = "Номер издания";
@@ -221,11 +222,11 @@ namespace Librarian.WinForms
             this.pageNumberTB.Size = new System.Drawing.Size(121, 23);
             this.pageNumberTB.TabIndex = 19;
             // 
-            // pageNuberL
+            // pageNumberL
             // 
             this.pageNumberL.AutoSize = true;
             this.pageNumberL.Location = new System.Drawing.Point(185, 149);
-            this.pageNumberL.Name = "pageNuberL";
+            this.pageNumberL.Name = "pageNumberL";
             this.pageNumberL.Size = new System.Drawing.Size(102, 15);
             this.pageNumberL.TabIndex = 18;
             this.pageNumberL.Text = "Номер страницы";
@@ -304,11 +305,23 @@ namespace Librarian.WinForms
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(94, 280);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteBtn.TabIndex = 29;
+            this.deleteBtn.Text = "Удалить";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Visible = false;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
             // CreateLiterarySource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 345);
+            this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.publishYearTB);
             this.Controls.Add(this.yearL);
@@ -376,5 +389,6 @@ namespace Librarian.WinForms
         private System.Windows.Forms.TextBox publishYearTB;
         private System.Windows.Forms.Label yearL;
         private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Button deleteBtn;
     }
 }

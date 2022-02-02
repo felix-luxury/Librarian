@@ -58,5 +58,10 @@ namespace Librarian.Core.References
         {
             return new SimpleField(literarySource.Source, config.PublisherPrefix, config.PublisherPostfix);
         }
+
+        internal static BaseField CreateCityField(LiterarySource literarySource, StyleConfig config)
+        {
+            return new SimpleField(literarySource.Source, config.CityPrefix, config.CityPostfix);
+        }
     }
 }

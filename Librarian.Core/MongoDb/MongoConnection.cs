@@ -16,6 +16,7 @@ namespace Librarian.Core.MongoDb
         public const string DbName = "Librarian";
         public const string StyleCollectionName = "Styles";
         public const string LitSourceCollectionName = "LiterarySources";
+        public const string StyleFamilyCollectionName = "StyleFamilies";
         public MongoConnection(string connectionString)
         {
             var client = new MongoClient(connectionString);
@@ -28,6 +29,11 @@ namespace Librarian.Core.MongoDb
             var collection = _db.GetCollection<Style>(StyleCollectionName);
             collection.InsertOne(style);
         }
+        public void InsertStyleFamily(StyleFamily family)
+        {
+            var collection = _db.GetCollection<StyleFamily>(StyleFamilyCollectionName);
+            collection.InsertOne(family);
+        }
         public void InsertLitSource(LiterarySource source)
         {
             var collection = _db.GetCollection<LiterarySource>(LitSourceCollectionName);
@@ -37,6 +43,11 @@ namespace Librarian.Core.MongoDb
         public List<Style> GetStyles()
         {
             var collection = _db.GetCollection<Style>(StyleCollectionName);
+            return collection.Find(new BsonDocument()).ToList();
+        }
+        public List<StyleFamily> GetStyleFamilies()
+        {
+            var collection = _db.GetCollection<StyleFamily>(StyleFamilyCollectionName);
             return collection.Find(new BsonDocument()).ToList();
         }
         public List<LiterarySource> GetLiterarySources()
@@ -50,6 +61,11 @@ namespace Librarian.Core.MongoDb
             var collection = _db.GetCollection<Style>(StyleCollectionName);
             collection.ReplaceOne(new BsonDocument("_id", id), newStyle, new ReplaceOptions { IsUpsert = true });
         }
+        public void UpsertStyleFamily(Guid id, StyleFamily newFamily)
+        {
+            var collection = _db.GetCollection<StyleFamily>(StyleFamilyCollectionName);
+            collection.ReplaceOne(new BsonDocument("_id", id), newFamily, new ReplaceOptions { IsUpsert = true });
+        }
         public void UpsertLiterarySources(Guid id, LiterarySource newSource)
         {
             var collection = _db.GetCollection<LiterarySource>(LitSourceCollectionName);
@@ -60,6 +76,12 @@ namespace Librarian.Core.MongoDb
         {
             var collection = _db.GetCollection<Style>(StyleCollectionName);
             var filter = Builders<Style>.Filter.Eq("Id", id);
+            collection.DeleteOne(filter);
+        }
+        public void DeleteStyleFamily(Guid id)
+        {
+            var collection = _db.GetCollection<StyleFamily>(StyleCollectionName);
+            var filter = Builders<StyleFamily>.Filter.Eq("Id", id);
             collection.DeleteOne(filter);
         }
         public void DeleteLitSource(Guid id)

@@ -1,4 +1,5 @@
-﻿using Librarian.Core.References;
+﻿using Librarian.Core.LiterarySources;
+using Librarian.Core.References;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
@@ -16,15 +17,17 @@ namespace Librarian.Core.Styles
         {
 
         }
-        public Style(string name, FieldType[] fields, StyleConfig config)
+        public Style(string name, FieldType[] fields, StyleConfig config, LiterarySourceType type)
         {
             Name = name;
             Fields = fields;
             Config = config;
+            Type = type;
         }
         [BsonId]
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public LiterarySourceType Type { get; set; }
         public FieldType[] Fields { get; set; }
         public StyleConfig Config { get; set; }
     }

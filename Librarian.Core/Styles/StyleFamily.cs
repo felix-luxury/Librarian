@@ -1,4 +1,5 @@
 ﻿using Librarian.Core.LiterarySources;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,25 +13,33 @@ namespace Librarian.Core.Styles
     {
         public StyleFamily()
         {
-            Style = new Dictionary<LiterarySourceType, Style>();
+            Styles = new Dictionary<LiterarySourceType, Style>();
         }
-        public Dictionary<LiterarySourceType, Style> Style { get; set; }
+        [BsonId]
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public Dictionary<LiterarySourceType, Style> Styles { get; set; }
         public Style this[LiterarySourceType type]
         {
             get 
             { 
-                if (Style.ContainsKey(type))
-                    return Style[type];
+                if (Styles.ContainsKey(type))
+                    return Styles[type];
                 throw new InvalidOperationException("Стиль для такого литературного источника не существует");
             }
             set 
             {
-                Style[type] = value; 
+                Styles[type] = value; 
             }
         }
-        public void Add(Style style, LiterarySourceType type)
+        public void Add(LiterarySourceType type, Style style)
         {
-            Style.Add(type, style);
+            Styles.Add(type, style);
+        }
+
+        public void Remove(LiterarySourceType type)
+        {
+            Styles.Remove(type);
         }
     }
 }

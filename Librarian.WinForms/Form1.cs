@@ -122,7 +122,7 @@ namespace Librarian.WinForms
 
         private void createStyle_Click(object sender, EventArgs e)
         {
-            using (CreateStyle form = new CreateStyle(_mongoDb))
+            using (StyleFamilyManager form = new StyleFamilyManager(_mongoDb))
             {
                 form.ShowDialog();
 

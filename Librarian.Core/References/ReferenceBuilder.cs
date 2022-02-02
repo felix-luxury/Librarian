@@ -63,6 +63,9 @@ namespace Librarian.Core.References
                     case FieldType.Publisher:
                         field = FieldsFactory.CreatePublisherField(LiterarySource, Style.Config);
                         break;
+                    case FieldType.City:
+                        field = FieldsFactory.CreateCityField(LiterarySource, Style.Config);
+                        break;
                     default:
                         throw new ArgumentException("Неизвестный тип поля");
                 }

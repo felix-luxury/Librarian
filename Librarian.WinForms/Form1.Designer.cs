@@ -38,9 +38,8 @@ namespace Librarian.WinForms
             this.Type = new System.Windows.Forms.ColumnHeader();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.stylesComboBox = new System.Windows.Forms.ComboBox();
+            this.familiesComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.createStyle = new System.Windows.Forms.Button();
             this.ExportToTxt = new System.Windows.Forms.Button();
             this.exportToDoc = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -113,13 +112,13 @@ namespace Librarian.WinForms
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // stylesComboBox
+            // familiesComboBox
             // 
-            this.stylesComboBox.FormattingEnabled = true;
-            this.stylesComboBox.Location = new System.Drawing.Point(207, 25);
-            this.stylesComboBox.Name = "stylesComboBox";
-            this.stylesComboBox.Size = new System.Drawing.Size(156, 23);
-            this.stylesComboBox.TabIndex = 5;
+            this.familiesComboBox.FormattingEnabled = true;
+            this.familiesComboBox.Location = new System.Drawing.Point(207, 25);
+            this.familiesComboBox.Name = "familiesComboBox";
+            this.familiesComboBox.Size = new System.Drawing.Size(156, 23);
+            this.familiesComboBox.TabIndex = 5;
             // 
             // label1
             // 
@@ -129,16 +128,6 @@ namespace Librarian.WinForms
             this.label1.Size = new System.Drawing.Size(88, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "Выбрать стиль";
-            // 
-            // createStyle
-            // 
-            this.createStyle.Location = new System.Drawing.Point(380, 11);
-            this.createStyle.Name = "createStyle";
-            this.createStyle.Size = new System.Drawing.Size(119, 48);
-            this.createStyle.TabIndex = 7;
-            this.createStyle.Text = "Создать стиль";
-            this.createStyle.UseVisualStyleBackColor = true;
-            this.createStyle.Click += new System.EventHandler(this.createStyle_Click);
             // 
             // ExportToTxt
             // 
@@ -202,11 +191,11 @@ namespace Librarian.WinForms
             // 
             // editStyle
             // 
-            this.editStyle.Location = new System.Drawing.Point(504, 11);
+            this.editStyle.Location = new System.Drawing.Point(369, 11);
             this.editStyle.Name = "editStyle";
             this.editStyle.Size = new System.Drawing.Size(119, 48);
             this.editStyle.TabIndex = 14;
-            this.editStyle.Text = "Редактировать стиль";
+            this.editStyle.Text = "Менеджер стилей";
             this.editStyle.UseVisualStyleBackColor = true;
             this.editStyle.Click += new System.EventHandler(this.editStyle_Click);
             // 
@@ -231,9 +220,8 @@ namespace Librarian.WinForms
             this.Controls.Add(this.button8);
             this.Controls.Add(this.exportToDoc);
             this.Controls.Add(this.ExportToTxt);
-            this.Controls.Add(this.createStyle);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.stylesComboBox);
+            this.Controls.Add(this.familiesComboBox);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.litSourcesListView);
@@ -252,9 +240,8 @@ namespace Librarian.WinForms
         private System.Windows.Forms.ListView litSourcesListView;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox stylesComboBox;
+        private System.Windows.Forms.ComboBox familiesComboBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button createStyle;
         private System.Windows.Forms.Button ExportToTxt;
         private System.Windows.Forms.Button exportToDoc;
         private System.Windows.Forms.Button button8;

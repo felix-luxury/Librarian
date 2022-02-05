@@ -80,7 +80,7 @@ namespace Librarian.Core.MongoDb
         }
         public void DeleteStyleFamily(Guid id)
         {
-            var collection = _db.GetCollection<StyleFamily>(StyleCollectionName);
+            var collection = _db.GetCollection<StyleFamily>(StyleFamilyCollectionName);
             var filter = Builders<StyleFamily>.Filter.Eq("Id", id);
             collection.DeleteOne(filter);
         }

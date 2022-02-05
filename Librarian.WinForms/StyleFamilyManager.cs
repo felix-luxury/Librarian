@@ -2,12 +2,6 @@
 using Librarian.Core.Styles;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Librarian.WinForms
@@ -20,7 +14,6 @@ namespace Librarian.WinForms
         {
             InitializeComponent();
             familiesLB.ValueMember = "Name";
-            stylesLB.ValueMember = "Name";
             _mongo = mongo;
 
             ReloadFamilies();
@@ -39,6 +32,19 @@ namespace Librarian.WinForms
 
         private void familiesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (familiesLB.SelectedIndex == -1)
+            {
+                createStyleBtn.Enabled = false;
+                renameFamilyBtn.Enabled = false;
+                deleteFamilyBtn.Enabled = false;
+            }
+            else
+            {
+                createStyleBtn.Enabled = true;
+                renameFamilyBtn.Enabled = true;
+                deleteFamilyBtn.Enabled = true;
+            }
+            stylesLB.Items.Clear();
             ReloadFamily();
         }
 
@@ -71,10 +77,69 @@ namespace Librarian.WinForms
 
         private void ReloadFamily()
         {
-            StyleFamily family = familiesLB.SelectedItem as StyleFamily;
-            foreach (var style in family.Styles)
+            stylesLB.Items.Clear();
+            if (familiesLB.SelectedIndex != -1)
             {
-                stylesLB.Items.Add(style);
+                StyleFamily family = familiesLB.SelectedItem as StyleFamily;
+                foreach (var style in family.Styles)
+                {
+                    stylesLB.Items.Add(style.Value);
+                }
+            }
+        }
+
+        private void editStyleBtn_Click(object sender, EventArgs e)
+        {
+            if (stylesLB.SelectedIndex == -1)
+            {
+                MessageBox.Show("Сначала выберите стиль");
+            }
+            using (CreateStyle form = new CreateStyle(_mongo, (StyleFamily)familiesLB.SelectedItem, (Style)stylesLB.SelectedItem))
+            {
+                form.ShowDialog();
+
+                ReloadFamily();
+            }
+        }
+
+        private void stylesLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (stylesLB.SelectedIndex == -1)
+            {
+                editStyleBtn.Enabled = false;
+            }
+            else
+            {
+                editStyleBtn.Enabled = true;
+            }
+        }
+
+        private void renameFamilyBtn_Click(object sender, EventArgs e)
+        {
+            using (Prompt dialog = new Prompt("Введите новое имя семейства", "Переименовать семейство"))
+            {
+                var result = dialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    var family = (StyleFamily)familiesLB.SelectedItem;
+                    var name = dialog.Text;
+                    family.Name = name;
+                    _mongo.UpsertStyleFamily(family.Id,family);
+                    MessageBox.Show("Стиль переименован");
+                    ReloadFamilies();
+                }
+            }
+        }
+
+        private void deleteFamilyBtn_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Вы точно хотите удалить семейство?", "Удалить семейство", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                var family = (StyleFamily)familiesLB.SelectedItem;
+                _mongo.DeleteStyleFamily(family.Id);
+                MessageBox.Show("Семейство удалено");
+                ReloadFamilies();
             }
         }
     }
@@ -115,6 +180,6 @@ namespace Librarian.WinForms
         public DialogResult ShowDialog()
         {
             return _form.ShowDialog();
-        } 
+        }
     }
 }

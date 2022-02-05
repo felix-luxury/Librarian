@@ -13,33 +13,37 @@ namespace Librarian.Core.Styles
     {
         public StyleFamily()
         {
-            Styles = new Dictionary<LiterarySourceType, Style>();
+            Styles = new Dictionary<string, Style>();
         }
         [BsonId]
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public Dictionary<LiterarySourceType, Style> Styles { get; set; }
+        public Dictionary<string, Style> Styles { get; set; }
         public Style this[LiterarySourceType type]
         {
             get 
             { 
-                if (Styles.ContainsKey(type))
-                    return Styles[type];
+                if (Styles.ContainsKey(type.ToString()))
+                    return Styles[type.ToString()];
                 throw new InvalidOperationException("Стиль для такого литературного источника не существует");
             }
             set 
             {
-                Styles[type] = value; 
+                Styles[type.ToString()] = value; 
             }
         }
         public void Add(LiterarySourceType type, Style style)
         {
-            Styles.Add(type, style);
+            Styles.Add(type.ToString(), style);
         }
 
         public void Remove(LiterarySourceType type)
         {
-            Styles.Remove(type);
+            Styles.Remove(type.ToString());
+        }
+        public bool Contains(LiterarySourceType type)
+        {
+            return Styles.ContainsKey(type.ToString());
         }
     }
 }

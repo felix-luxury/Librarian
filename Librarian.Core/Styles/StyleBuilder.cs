@@ -50,7 +50,7 @@ namespace Librarian.Core.Styles
         }
         public Style Build()
         {
-            return new Style(StyleName, Fields.ToArray(), Config);
+            return new Style(StyleName, Fields.ToArray(), Config, LiterarySources.LiterarySourceType.Default);
         }
     }
 }

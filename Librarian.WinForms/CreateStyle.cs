@@ -55,6 +55,7 @@ namespace Librarian.WinForms
             _style = style;
             _idEdit = true;
             _config = style.Config;
+            styleTypeCB.SelectedItem = _style.Type;
             styleNameTB.Text = style.Name;
             foreach (var field in style.Fields)
             {
@@ -139,6 +140,8 @@ namespace Librarian.WinForms
         {
             _family.Remove(_style.Type);
             _mongo.UpsertStyleFamily(_family.Id, _family);
+            MessageBox.Show("Стиль удалён");
+            this.Close();
         }
     }
 }

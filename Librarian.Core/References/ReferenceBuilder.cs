@@ -14,57 +14,58 @@ namespace Librarian.Core.References
         //private List<BaseField> _fields;
 
         // Свойства
-        public Style Style { get; set; }
+        public StyleFamily Family { get; set; }
         public LiterarySource LiterarySource { get; set; }
 
 
         // Конструктор
-        public ReferenceBuilder(LiterarySource literarySource, Style style)
+        public ReferenceBuilder(LiterarySource literarySource, StyleFamily family)
         {
             //_fields = new List<BaseField>();
             LiterarySource = literarySource;
-            Style = style;
+            Family = family;
         }
         public List<BaseField> GetFields()
         {
             List<BaseField> fields = new List<BaseField>();
-            foreach (var fieldType in Style.Fields)
+            var style = GetActiveStyle();
+            foreach (var fieldType in style.Fields)
             {
                 BaseField field;
                 switch (fieldType)
                 {
                     case FieldType.Authors:
-                        field = FieldsFactory.CreateAuthorsField(LiterarySource, Style.Config);
+                        field = FieldsFactory.CreateAuthorsField(LiterarySource, style.Config);
                         break;
                     case FieldType.Year:
-                        field = FieldsFactory.CreateYearField(LiterarySource, Style.Config);
+                        field = FieldsFactory.CreateYearField(LiterarySource, style.Config);
                         break;
                     case FieldType.Title:
-                        field = FieldsFactory.CreateArticleTitleField(LiterarySource, Style.Config);
+                        field = FieldsFactory.CreateArticleTitleField(LiterarySource, style.Config);
                         break;
                     case FieldType.JournalTitle:
-                        field = FieldsFactory.CreateJournalTitleField(LiterarySource, Style.Config);
+                        field = FieldsFactory.CreateJournalTitleField(LiterarySource, style.Config);
                         break;
                     case FieldType.ReadDate:
-                        field = FieldsFactory.CreateDateField(LiterarySource, Style.Config);
+                        field = FieldsFactory.CreateDateField(LiterarySource, style.Config);
                         break;
                     case FieldType.Source:
-                        field = FieldsFactory.CreateSourceField(LiterarySource, Style.Config);
+                        field = FieldsFactory.CreateSourceField(LiterarySource, style.Config);
                         break;
                     case FieldType.EditionNumber:
-                        field = FieldsFactory.CreatePrintEditionField(LiterarySource, Style.Config);
+                        field = FieldsFactory.CreatePrintEditionField(LiterarySource, style.Config);
                         break;
                     case FieldType.PageCount:
-                        field = FieldsFactory.CreatePageCountField(LiterarySource, Style.Config);
+                        field = FieldsFactory.CreatePageCountField(LiterarySource, style.Config);
                         break;
                     case FieldType.PageNumber:
-                        field = FieldsFactory.CreatePageNumberField(LiterarySource, Style.Config);
+                        field = FieldsFactory.CreatePageNumberField(LiterarySource, style.Config);
                         break;
                     case FieldType.Publisher:
-                        field = FieldsFactory.CreatePublisherField(LiterarySource, Style.Config);
+                        field = FieldsFactory.CreatePublisherField(LiterarySource, style.Config);
                         break;
                     case FieldType.City:
-                        field = FieldsFactory.CreateCityField(LiterarySource, Style.Config);
+                        field = FieldsFactory.CreateCityField(LiterarySource, style.Config);
                         break;
                     default:
                         throw new ArgumentException("Неизвестный тип поля");
@@ -82,6 +83,14 @@ namespace Librarian.Core.References
                 sb.Append(field.Build());
             }
             return sb.ToString();
+        }
+        private Style GetActiveStyle()
+        {
+            if (!Family.Contains(LiterarySource.LiterarySourceType))
+            {
+                throw new StyleNotFoundException("Стиль для этого типа источника не определён в семействе");
+            }
+            return Family[LiterarySource.LiterarySourceType];
         }
     }
 }

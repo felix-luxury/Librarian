@@ -33,6 +33,9 @@ namespace Librarian.WinForms
             this.stylesLB = new System.Windows.Forms.ListBox();
             this.createFamilyBtn = new System.Windows.Forms.Button();
             this.createStyleBtn = new System.Windows.Forms.Button();
+            this.editStyleBtn = new System.Windows.Forms.Button();
+            this.renameFamilyBtn = new System.Windows.Forms.Button();
+            this.deleteFamilyBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // familiesLB
@@ -53,6 +56,7 @@ namespace Librarian.WinForms
             this.stylesLB.Name = "stylesLB";
             this.stylesLB.Size = new System.Drawing.Size(254, 424);
             this.stylesLB.TabIndex = 1;
+            this.stylesLB.SelectedIndexChanged += new System.EventHandler(this.stylesLB_SelectedIndexChanged);
             // 
             // createFamilyBtn
             // 
@@ -66,6 +70,7 @@ namespace Librarian.WinForms
             // 
             // createStyleBtn
             // 
+            this.createStyleBtn.Enabled = false;
             this.createStyleBtn.Location = new System.Drawing.Point(534, 62);
             this.createStyleBtn.Name = "createStyleBtn";
             this.createStyleBtn.Size = new System.Drawing.Size(97, 43);
@@ -74,11 +79,47 @@ namespace Librarian.WinForms
             this.createStyleBtn.UseVisualStyleBackColor = true;
             this.createStyleBtn.Click += new System.EventHandler(this.createStyleBtn_Click);
             // 
+            // editStyleBtn
+            // 
+            this.editStyleBtn.Enabled = false;
+            this.editStyleBtn.Location = new System.Drawing.Point(637, 62);
+            this.editStyleBtn.Name = "editStyleBtn";
+            this.editStyleBtn.Size = new System.Drawing.Size(105, 43);
+            this.editStyleBtn.TabIndex = 4;
+            this.editStyleBtn.Text = "Изменить стиль";
+            this.editStyleBtn.UseVisualStyleBackColor = true;
+            this.editStyleBtn.Click += new System.EventHandler(this.editStyleBtn_Click);
+            // 
+            // renameFamilyBtn
+            // 
+            this.renameFamilyBtn.Enabled = false;
+            this.renameFamilyBtn.Location = new System.Drawing.Point(637, 13);
+            this.renameFamilyBtn.Name = "renameFamilyBtn";
+            this.renameFamilyBtn.Size = new System.Drawing.Size(105, 43);
+            this.renameFamilyBtn.TabIndex = 5;
+            this.renameFamilyBtn.Text = "Переименовать семейство";
+            this.renameFamilyBtn.UseVisualStyleBackColor = true;
+            this.renameFamilyBtn.Click += new System.EventHandler(this.renameFamilyBtn_Click);
+            // 
+            // deleteFamilyBtn
+            // 
+            this.deleteFamilyBtn.Enabled = false;
+            this.deleteFamilyBtn.Location = new System.Drawing.Point(748, 13);
+            this.deleteFamilyBtn.Name = "deleteFamilyBtn";
+            this.deleteFamilyBtn.Size = new System.Drawing.Size(105, 43);
+            this.deleteFamilyBtn.TabIndex = 6;
+            this.deleteFamilyBtn.Text = "Удалить семейство";
+            this.deleteFamilyBtn.UseVisualStyleBackColor = true;
+            this.deleteFamilyBtn.Click += new System.EventHandler(this.deleteFamilyBtn_Click);
+            // 
             // StyleFamilyManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(857, 450);
+            this.Controls.Add(this.deleteFamilyBtn);
+            this.Controls.Add(this.renameFamilyBtn);
+            this.Controls.Add(this.editStyleBtn);
             this.Controls.Add(this.createStyleBtn);
             this.Controls.Add(this.createFamilyBtn);
             this.Controls.Add(this.stylesLB);
@@ -95,5 +136,8 @@ namespace Librarian.WinForms
         private System.Windows.Forms.ListBox stylesLB;
         private System.Windows.Forms.Button createFamilyBtn;
         private System.Windows.Forms.Button createStyleBtn;
+        private System.Windows.Forms.Button editStyleBtn;
+        private System.Windows.Forms.Button renameFamilyBtn;
+        private System.Windows.Forms.Button deleteFamilyBtn;
     }
 }

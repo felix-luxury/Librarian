@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 namespace Librarian.Core.Styles
 {
     [Serializable]
-    public class Style
+    public class Style : Object
     {
         public Style()
         {
@@ -30,5 +30,10 @@ namespace Librarian.Core.Styles
         public LiterarySourceType Type { get; set; }
         public FieldType[] Fields { get; set; }
         public StyleConfig Config { get; set; }
+
+        public override string ToString()
+        {
+            return Name + ": " + Type.ToString();
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace Librarian.WinForms
     {
         private MongoConnection _mongoDb;
         private List<LiterarySource> _literarySources;
-        private List<Style> _styles;
+        private List<StyleFamily> _styleFamilies;
         public List<LiterarySource> SelectedLiterarySources
         {
             get
@@ -39,24 +39,24 @@ namespace Librarian.WinForms
             InitializeComponent();
             _mongoDb = new MongoConnection("mongodb://localhost:27017");
             _literarySources = new List<LiterarySource>();
-            _styles = new List<Style>();
+            _styleFamilies = new List<StyleFamily>();
             LoadLitSources();
-            LoadStyles();
+            LoadFamilies();
         }
 
-        private void LoadStyles()
+        private void LoadFamilies()
         {
-            _styles = _mongoDb.GetStyles();
-            UpdateStylesComboBox();
+            _styleFamilies = _mongoDb.GetStyleFamilies();
+            UpdateFamiliesComboBox();
         }
 
-        private void UpdateStylesComboBox()
+        private void UpdateFamiliesComboBox()
         {
-            stylesComboBox.Items.Clear();
-            stylesComboBox.Text = "";
-            foreach (var item in _styles)
+            familiesComboBox.Items.Clear();
+            familiesComboBox.Text = "";
+            foreach (var item in _styleFamilies)
             {
-                stylesComboBox.Items.Add(item.Name);
+                familiesComboBox.Items.Add(item.Name);
             }
         }
 
@@ -122,17 +122,12 @@ namespace Librarian.WinForms
 
         private void createStyle_Click(object sender, EventArgs e)
         {
-            using (StyleFamilyManager form = new StyleFamilyManager(_mongoDb))
-            {
-                form.ShowDialog();
-
-                LoadStyles();
-            }
+            
         }
 
         private void ExportToTxt_Click(object sender, EventArgs e)
         {
-            if (stylesComboBox.SelectedItem == null)
+            if (familiesComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Сначала выберите стиль");
                 return;
@@ -142,9 +137,9 @@ namespace Librarian.WinForms
                 MessageBox.Show("Сначала выберите лит. источники");
                 return;
             }
-            
-            string styleName = stylesComboBox.SelectedItem.ToString();
-            Style style = _styles.Where(x => x.Name == styleName).First();
+
+            string familyName = familiesComboBox.SelectedItem.ToString();
+            StyleFamily family = _styleFamilies.Where(x => x.Name == familyName).First();
             List<string> litSourceTitle = new List<string>();
             List<LiterarySource> sources  = new List<LiterarySource>();
             foreach (var item in selectedLitSourcesListView.Items)
@@ -159,32 +154,29 @@ namespace Librarian.WinForms
 
             StringBuilder sb = new StringBuilder();
             int index = 1;
-            foreach (var source in sources)
+            try
             {
-                var builder = new ReferenceBuilder(source, style);
-                sb.Append($"{index}. {builder.Build()} \n");
-                index++;
+                foreach (var source in sources)
+                {
+                    var builder = new ReferenceBuilder(source, family);
+                    sb.Append($"{index}. {builder.Build()} \n");
+                    index++;
+                }
+                File.WriteAllText($"Литературные источники {DateTime.Now.ToString("dd.MM.yy HH-mm-ss")}.txt", sb.ToString());
             }
-            File.WriteAllText($"Литературные источники {DateTime.Now.ToString("dd.MM.yy HH-mm-ss")}.txt", sb.ToString());
-            //Console.WriteLine(builder.Build());
+            catch (StyleNotFoundException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void editStyle_Click(object sender, EventArgs e)
         {
-            if (stylesComboBox.SelectedItem == null)
+            using (StyleFamilyManager form = new StyleFamilyManager(_mongoDb))
             {
-                MessageBox.Show("Сначала выберите стиль");
-            }
-            else
-            {
-                string styleName = stylesComboBox.SelectedItem.ToString();
-                Style style = _styles.Where(x => x.Name == styleName).First();
-                using (CreateStyle form = new CreateStyle(_mongoDb, style))
-                {
-                    form.ShowDialog();
+                form.ShowDialog();
 
-                    LoadStyles();
-                }
+                LoadFamilies();
             }
         }
 
@@ -224,7 +216,7 @@ namespace Librarian.WinForms
 
         private void exportToDoc_Click(object sender, EventArgs e)
         {
-            if (stylesComboBox.SelectedItem == null)
+            if (familiesComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Сначала выберите стиль");
                 return;
@@ -235,8 +227,8 @@ namespace Librarian.WinForms
                 return;
             }
 
-            string styleName = stylesComboBox.SelectedItem.ToString();
-            Style style = _styles.Where(x => x.Name == styleName).First();
+            string familyName = familiesComboBox.SelectedItem.ToString();
+            StyleFamily family = _styleFamilies.Where(x => x.Name == familyName).First();
             List<string> litSourceTitle = new List<string>();
             List<LiterarySource> sources = new List<LiterarySource>();
             foreach (var item in selectedLitSourcesListView.Items)
@@ -260,16 +252,24 @@ namespace Librarian.WinForms
             run1.FontSize = 16;
             run1.IsBold = true;
             run1.SetText("Список литературы");
-            foreach (var source in sources)
+            try
             {
-                var builder = new ReferenceBuilder(source, style);
-                XWPFParagraph par = doc.CreateParagraph();
-                par.SetNumID(numId);
-                XWPFRun run = par.CreateRun();
-                run.FontFamily = "Times New Roman";
-                run.FontSize = 14;
-                run.SetText(builder.Build());
+                foreach (var source in sources)
+                {
+                    var builder = new ReferenceBuilder(source, family);
+                    XWPFParagraph par = doc.CreateParagraph();
+                    par.SetNumID(numId);
+                    XWPFRun run = par.CreateRun();
+                    run.FontFamily = "Times New Roman";
+                    run.FontSize = 14;
+                    run.SetText(builder.Build());
+                }
             }
+            catch (StyleNotFoundException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
 
 
             FileStream fs = new FileStream($"Литературные источники {DateTime.Now.ToString("dd.MM.yy HH-mm-ss")}.docx", FileMode.Create);
@@ -280,7 +280,7 @@ namespace Librarian.WinForms
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (stylesComboBox.SelectedItem == null)
+            if (familiesComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Сначала выберите стиль");
                 return;
@@ -291,8 +291,8 @@ namespace Librarian.WinForms
                 return;
             }
 
-            string styleName = stylesComboBox.SelectedItem.ToString();
-            Style style = _styles.Where(x => x.Name == styleName).First();
+            string familyName = familiesComboBox.SelectedItem.ToString();
+            StyleFamily family = _styleFamilies.Where(x => x.Name == familyName).First();
             List<string> litSourceTitle = new List<string>();
             List<LiterarySource> sources = new List<LiterarySource>();
             foreach (var item in selectedLitSourcesListView.Items)
@@ -325,18 +325,26 @@ namespace Librarian.WinForms
                         run1.FontSize = 16;
                         run1.IsBold = true;
                         run1.SetText("Список литературы");
-                        foreach (var source in sources)
+                        try
                         {
-                            var builder = new ReferenceBuilder(source, style);
-                            XWPFParagraph par = doc.CreateParagraph();
-                            par.SetNumID(numId);
-                            XWPFRun run = par.CreateRun();
-                            run.FontFamily = "Times New Roman";
-                            run.FontSize = 14;
-                            run.SetText(builder.Build());
+                            foreach (var source in sources)
+                            {
+                                var builder = new ReferenceBuilder(source, family);
+                                XWPFParagraph par = doc.CreateParagraph();
+                                par.SetNumID(numId);
+                                XWPFRun run = par.CreateRun();
+                                run.FontFamily = "Times New Roman";
+                                run.FontSize = 14;
+                                run.SetText(builder.Build());
+                            }
+                            doc.Write(ws);
+                            MessageBox.Show("Экспорт завершён");
                         }
-                        doc.Write(ws);
-                        MessageBox.Show("Экспорт завершён");
+                        catch (StyleNotFoundException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        
                     }
                 }
             }
